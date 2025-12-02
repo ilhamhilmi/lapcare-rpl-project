@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function FooterClient() {
     return (
         <footer className="w-full flex items-center bg-slate-200">
-            <div className="w-full mx-auto bg-slate-800 pt-6 pb-4 rounded-t-2xl">
+            <div className="w-full mx-auto bg-slate-800 pt-6 pb-4 rounded-t-4xl">
                 <div className="px-6 flex">
                     <div className="border-b border-secondary pb-5 w-full">
                         <div className="mb-5">

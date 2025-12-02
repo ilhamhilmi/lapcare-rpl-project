@@ -41,11 +41,11 @@ export default function aboutPage() {
             <section className="pb-16 bg-slate-200">
                 <div className="w-full bg-gradient-to-tl from-[#1d293d] via-[#23385e] to-[#3b82f6] pt-12 pb-12" data-aos="fade-up">
                     <div className="flex justify-center items-center" data-aos="fade-up">
-                        <h1 className="font-poppins text-xl lg:text-2xl">Nilai Perusahaan</h1>
+                        <h1 className="font-poppins text-xl lg:text-2xl">Etos & Nilai Perusahaan</h1>
                     </div>
                     <div className="flex justify-center items-center mt-8 px-4">
                         <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-5 lg:7 2xl:10">
-                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md" data-aos="fade-up">
+                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md shadow-lg" data-aos="fade-up">
                                 <div className="border bg-white mr-5 rounded-xl p-3">
                                     <Image src={integrity} alt="integrity" className="w-[35px]" />
                                 </div>
@@ -54,7 +54,7 @@ export default function aboutPage() {
                                     <h1 className="font-poppins text-sm text-slate-400">Integrity & Transparency</h1>
                                 </div>
                             </div>
-                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md" data-aos="fade-up">
+                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md shadow-lg" data-aos="fade-up">
                                 <div className="border bg-white mr-5 rounded-xl p-3">
                                     <Image src={time} alt="time" className="w-[35px]" />
                                 </div>
@@ -63,7 +63,7 @@ export default function aboutPage() {
                                     <h1 className="font-poppins text-sm text-slate-400">Speed & Efficiency</h1>
                                 </div>
                             </div>
-                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md" data-aos="fade-up">
+                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md shadow-lg" data-aos="fade-up">
                                 <div className="border bg-white mr-5 rounded-xl p-3">
                                     <Image src={care} alt="care" className="w-[35px]" />
                                 </div>
@@ -72,7 +72,7 @@ export default function aboutPage() {
                                     <h1 className="font-poppins text-sm text-slate-400">Care & Empathy</h1>
                                 </div>
                             </div>
-                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md" data-aos="fade-up">
+                            <div className="flex border px-8 py-5 border-secondary rounded-2xl bg-white/5 backdrop-blur-md shadow-lg" data-aos="fade-up">
                                 <div className="border bg-white mr-5 rounded-xl p-3">
                                     <Image src={star} alt="star" className="w-[35px]" />
                                 </div>
