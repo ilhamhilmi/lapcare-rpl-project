@@ -36,8 +36,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-darkb/85 via-darkb/90 to-darkb -z-10" />
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center mb-5">
-            <h1 className="font-poppins text-7xl font-semibold px-4 lg:text-9xl mb-5">LapCare</h1>
-            <p className="max-w-sm lg:max-w-2xl px-4 text-md lg:text-lg font-poppins">Selamat datang di <span className="font-semibold">LapCare</span>, platform konsultasi dan informasi seputar laptop dan komputer.</p>
+            <h1 className="font-poppins text-7xl font-semibold px-4 lg:text-9xl mb-5 text-white">Lap<span className="text-transparent bg-clip-text bg-[#34fa66]">Care</span></h1>
+            <p className="max-w-sm lg:max-w-2xl px-4 text-md lg:text-lg font-poppins text-white">Selamat datang di <span className="font-semibold">LapCare</span>, platform konsultasi dan informasi seputar laptop dan komputer.</p>
           </div>
           <div className="flex flex-col lg:flex-row justify-center items-center gap-3 mb-5">
             <Link href="/guide" className="border font-poppins px-10 py-2 rounded-full text-white bg-transparent border-white cursor-pointer hover:bg-white hover:text-darkb transition duration-300">
@@ -93,7 +93,7 @@ export default function Home() {
           <div className="flex justify-center items-center" data-aos="fade-up">
             <h1 className="font-poppins text-3xl 2xl:text-4xl text-white border-b pb-5 border-secondary font-semibold text-center max-w-[300px] lg:max-w-none mb-8">Pertanyaan Umum Dari Pengguna</h1>
           </div>
-          <div className="bg-white/5 shadow-lg backdrop-blur-md w-[350px] lg:w-3xl 2xl:w-4xl flex-col justify-items-center mx-auto rounded-lg border border-secondary text-center divide-y divide-white mb-8" data-aos="fade-up">
+          <div className="bg-white/5 shadow-lg backdrop-blur-md w-[350px] lg:w-3xl 2xl:w-4xl flex-col justify-items-center mx-auto rounded-lg border border-secondary text-center divide-y divide-white mb-8 text-white" data-aos="fade-up">
             <details className="py-4 w-full border-secondary">
               <summary className="text-lg font-poppins lg:text-xl 2xl:text-2xl cursor-pointer">Mengapa Laptop Saya Terasa Lambat atau Lemot?</summary>
               <p className="text-md lg:text-lg 2xl:text-xl text-justify px-6 mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt doloribus explicabo quas provident corporis veniam rem accusamus, quisquam aliquid rerum, enim, culpa fugit maiores mollitia veritatis quia laboriosam impedit molestiae omnis cupiditate laudantium consectetur expedita quo hic! Nisi placeat sed temporibus, facilis quis explicabo, quibusdam dolor quisquam id facere autem.</p>
@@ -124,7 +124,7 @@ export default function Home() {
             </details>
           </div>
           <div className="flex justify-center" data-aos="fade-up">
-            <h3 className="font-poppins text-sm lg:text-md ">Punya Pertanyaan Lain? <span className="underline"><Link href="/">Hubungi Kami</Link></span></h3>
+            <h3 className="font-poppins text-sm lg:text-md text-white">Punya Pertanyaan Lain? <span className="underline text-white"><Link href="/">Hubungi Kami</Link></span></h3>
           </div>
         </div>
       </section>

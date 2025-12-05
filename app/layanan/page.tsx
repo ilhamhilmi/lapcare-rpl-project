@@ -24,10 +24,10 @@ export default function guidePage() {
             <section className="bg-slate-200 pt-32 pb-16">
                 <div className="container mx-auto">
                     <div className="flex justify-center items-center mb-5">
-                        <h1 className="text-darkb font-poppins text-2xl 2xl:text-3xl font-semibold border-b pb-5 border-secondary" data-aos="fade-up">Panduan</h1>
+                        <h1 className="text-darkb font-poppins text-2xl 2xl:text-3xl font-semibold border-b pb-5 border-secondary" data-aos="fade-up">Layanan Kami</h1>
                     </div>
                     <div className="flex justify-center items-center px-4" data-aos="fade-up">
-                        <p className="text-darkb text-center text-4xl xl:text-5xl font-poppins">Perangkat apa yang ingin kamu perbaiki?</p>
+                        <p className="text-darkb text-center text-4xl xl:text-5xl font-poppins">Apa yang kami tawarkan?</p>
                     </div>
                 </div>
             </section>

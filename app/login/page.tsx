@@ -14,17 +14,17 @@ export default function Login() {
                         <h1 className="font-poppins text-3xl text-white font-semibold mb-8">Login</h1>
                         <div className="flex flex-col w-full xl:w-2/3 mb-3">
                             {/* <label htmlFor="" className="font-poppins text-sm">Username</label> */}
-                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full" placeholder="Username" />
+                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full text-white" placeholder="Username" />
                         </div>
                         <div className="flex flex-col w-full xl:w-2/3 mb-3">
                             {/* <label htmlFor="" className="font-poppins text-sm">Password</label> */}
-                            <input type="password" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full" placeholder="Password"/>
+                            <input type="password" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full text-white" placeholder="Password"/>
                         </div>
 
                         <div className="flex flex-col items-center justify-center">
                             <button className="border rounded-full px-6 py-2 font-poppins border-primary bg-primary text-white shadow-xl cursor-pointer mb-2">Login</button>
-                            <p className="font-poppins text-sm">Belum punya akun? <Link href="/signup" className="font-semibold">Sign Up</Link></p>
-                            <Link href="/" className="font-poppins text-sm underline">Lupa Password?</Link>
+                            <p className="font-poppins text-sm text-white">Belum punya akun? <Link href="/signup" className="font-semibold text-white">Sign Up</Link></p>
+                            <Link href="/" className="font-poppins text-sm underline text-white">Lupa Password?</Link>
                         </div>
                     </div>
                 </div>

@@ -12,8 +12,8 @@ export default function FooterClient() {
                 <div className="px-6 flex">
                     <div className="border-b border-secondary pb-5 w-full">
                         <div className="mb-5">
-                            <h1 className="font-poppins font-semibold mb-3 text-xl">LapCare Indonesia</h1>
-                            <p className="font-poppins lg:max-w-1/3">Lapcare adalah platform panduan serta layanan konsultasi & Home Service untuk membantu anda dalam permasalahan Laptop / PC.</p>
+                            <h1 className="font-poppins font-semibold mb-3 text-xl text-white">LapCare Indonesia</h1>
+                            <p className="font-poppins lg:max-w-1/3 text-white">Lapcare adalah platform panduan serta layanan konsultasi & Home Service untuk membantu anda dalam permasalahan Laptop / PC.</p>
                         </div>
                         <div className="flex mb-3">
                             <Image src={location} alt="location" className="w-[25px]" />

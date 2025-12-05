@@ -14,24 +14,24 @@ export default function SignUp() {
                         <h1 className="font-poppins text-3xl text-white font-semibold mb-8">Sign Up</h1>
                         <div className="flex flex-col w-full xl:w-2/3 mb-3">
                             {/* <label htmlFor="" className="font-poppins text-sm">Email</label> */}
-                            <input type="email" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full" placeholder="Email Address" />
+                            <input type="email" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full text-white" placeholder="Email Address" />
                         </div>
                         <div className="flex flex-col w-full xl:w-2/3 mb-3">
                             {/* <label htmlFor="" className="font-poppins text-sm">Phone Number</label> */}
-                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full" placeholder="Phone Number" />
+                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full text-white" placeholder="Phone Number" />
                         </div>
                         <div className="flex flex-col w-full xl:w-2/3 mb-3">
                             {/* <label htmlFor="" className="font-poppins text-sm">Username</label> */}
-                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full" placeholder="Username"/>
+                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full text-white" placeholder="Username"/>
                         </div>
                         <div className="flex flex-col w-full xl:w-2/3 mb-3">
                             {/* <label htmlFor="" className="font-poppins text-sm">Password</label> */}
-                            <input type="password" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full" placeholder="Password"/>
+                            <input type="password" className="border focus:outline-none px-4 py-2 font-poppins border-white rounded-full text-white" placeholder="Password"/>
                         </div>
 
                         <div className="flex flex-col items-center justify-center space-y-2">
                             <button className="border rounded-full px-6 py-2 font-poppins border-primary bg-primary text-white shadow-xl cursor-pointer">Buat Akun</button>
-                            <p className="font-poppins text-sm">Sudah punya akun? <Link href="/login" className="font-semibold">Login</Link></p>
+                            <p className="font-poppins text-sm text-white">Sudah punya akun? <Link href="/login" className="font-semibold text-white">Login</Link></p>
                         </div>
                     </div>
                 </div>
