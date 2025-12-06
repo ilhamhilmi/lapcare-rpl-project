@@ -31,23 +31,23 @@ export default function laptopGuide() {
                     <div className="xl:hidden grid grid-cols-1 xl:grid-cols-2 px-8 gap-y-10 xl:gap-x-10">
                         <div className="border border-darkb flex flex-col p-6 text-center items-center justify-center rounded-xl space-y-5">
                             <Image src={hardware} alt="hardware" className="w-[350px] rounded-xl" />
-                            <Link href="/guide/komputer/hardware" className="font-poppins border px-3 py-1 rounded-full text-white text-xl bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Hardware</Link>
+                            <Link href="/guide/laptop/hardware" className="font-poppins border px-3 py-1 rounded-full text-white text-xl bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Hardware</Link>
                         </div>
                         <div className="border border-darkb flex flex-col p-6 text-center items-center justify-center rounded-xl space-y-5">
                             <Image src={software} alt="software" className="w-[350px] rounded-xl" />
-                            <Link href="/guide/komputer/software" className="font-poppins border px-3 py-1 rounded-full text-white text-xl bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Software</Link>
+                            <Link href="/guide/laptop/software" className="font-poppins border px-3 py-1 rounded-full text-white text-xl bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Software</Link>
                         </div>
                     </div>
                     {/* Desktop Ver */}
                     <div className="hidden xl:grid grid-cols-1 xl:grid-cols-2 px-8 gap-y-10 xl:gap-x-10">
-                        <Link href="/guide/komputer/hardware" className="border border-darkb text-center items-center justify-center rounded-xl relative group">
+                        <Link href="/guide/laptop/hardware" className="border border-darkb text-center items-center justify-center rounded-xl relative group">
                             <Image src={hardware} alt="hardware" className="w-full h-full object-cover rounded-xl" />
                             <div className="absolute inset-0 bg-black/70 rounded-xl group-hover:bg-black/85 transition duration-300"></div>
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <h1 className="text-white font-poppins text-3xl uppercase font-semibold">Hardware</h1>
                             </div>
                         </Link>
-                        <Link href="/guide/komputer/software" className="border border-darkb text-center items-center justify-center rounded-xl relative group">
+                        <Link href="/guide/laptop/software" className="border border-darkb text-center items-center justify-center rounded-xl relative group">
                             <Image src={software} alt="software" className="w-full h-full object-cover rounded-xl" />
                             <div className="absolute inset-0 bg-black/70 rounded-xl group-hover:bg-black/85 transition duration-300"></div>
                             <div className="absolute inset-0 flex items-center justify-center">

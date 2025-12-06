@@ -36,7 +36,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-darkb/85 via-darkb/90 to-darkb -z-10" />
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center mb-5">
-            <h1 className="font-poppins text-7xl font-semibold px-4 lg:text-9xl mb-5 text-white">Lap<span className="text-transparent bg-clip-text bg-[#34fa66]">Care</span></h1>
+            <h1 className="font-poppins text-7xl font-semibold px-4 lg:text-9xl mb-5 text-white">Lap<span className="text-transparent bg-clip-text bg-gradient-to-tr from-sky-500 to-sky-300">Care</span></h1>
             <p className="max-w-sm lg:max-w-2xl px-4 text-md lg:text-lg font-poppins text-white">Selamat datang di <span className="font-semibold">LapCare</span>, platform konsultasi dan informasi seputar laptop dan komputer.</p>
           </div>
           <div className="flex flex-col lg:flex-row justify-center items-center gap-3 mb-5">

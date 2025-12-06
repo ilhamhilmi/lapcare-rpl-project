@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function softwareKomputer() {
+export default function softwareLaptop() {
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -24,7 +24,7 @@ export default function softwareKomputer() {
             <section className="bg-slate-200 pt-32">
                 <div className="container mx-auto">
                     <div className="flex justify-center items-center mb-5">
-                        <h1 className="text-darkb font-poppins text-2xl 2xl:text-3xl font-semibold border-b pb-5 border-secondary">Panduan Software Komputer</h1>
+                        <h1 className="text-darkb font-poppins text-2xl 2xl:text-3xl font-semibold border-b pb-5 border-secondary">Panduan Software Laptop</h1>
                     </div>
                     <div className="flex justify-center items-center px-4">
                         <p className="text-darkb text-center text-4xl xl:text-5xl font-poppins">Silahkan pilih kendala yang kamu alami</p>
