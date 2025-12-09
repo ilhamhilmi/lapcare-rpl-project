@@ -12,6 +12,15 @@ export default function NavbarClient() {
     setIsOpen(!isOpen);
   };
 
+  const handleLogout = async () => {
+    await fetch("/api/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+
+    window.location.href = "/login";
+  };
+
   return (
     <header className="z-50 w-full fixed top-0 left-0 flex items-center">
       <div className="container mx-auto">
@@ -51,7 +60,12 @@ export default function NavbarClient() {
               <Link href="/layanan" className={pathname === '/layanan' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Layanan Kami</Link>
               <Link href="/signup" className="border px-3 py-2 rounded-xl font-poppins  border-white text-white">Sign Up</Link>
               <Link href="/login" className="border px-3 py-2 rounded-xl font-poppins bg-primary border-primary hover:bg-sky-700 hover:border-sky-700 duration-300 text-white">Login</Link>
-            </nav>
+<button
+          onClick={handleLogout}
+          className="bg-red-500 hover:bg-red-600 px-8 py-3 rounded font-semibold"
+        >
+          Logout
+        </button>            </nav>
           </div>
         </div>
       </div>
