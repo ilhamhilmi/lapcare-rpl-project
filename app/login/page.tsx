@@ -1,10 +1,18 @@
 "use client";
-
+import AOS from 'aos';
+import { useEffect } from "react";
 import { useState } from "react";
 import Link from "next/link";
 import NavbarClient from "../components/NavbarClient";
 
 export default function Login() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  }, []);
+
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -49,10 +57,10 @@ export default function Login() {
     <div>
       <NavbarClient />
 
-      <section className="min-h-screen w-full flex items-center bg-gradient-to-t from-[#1d293d] via-[#23385e] to-[#3b82f6] pt-16">
+      <section className="min-h-screen w-full flex items-center bg-slate-200 pt-16">
         <div className="container mx-auto flex items-center justify-center px-4">
-          <div className="w-full xl:w-1/2 bg-white/5 backdrop-blur-2xl shadow-2xl rounded-2xl flex flex-col items-center px-7 py-10">
-            <h1 className="text-3xl text-white mb-8">Login</h1>
+          <div className="w-full xl:w-1/2 bg-white backdrop-blur-2xl shadow-2xl rounded-2xl flex flex-col items-center px-7 py-10 border border-darkb" data-aos="zoom-in-up">
+            <h1 className="text-3xl text-darkb mb-8 font-poppins font-semibold">Login</h1>
 
             <form
               onSubmit={handleSubmit}
@@ -63,10 +71,9 @@ export default function Login() {
                   name="username"
                   onChange={handleChange}
                   type="text"
-                  className="border px-4 py-2 rounded-full w-full"
+                  className="border px-4 py-2 rounded-full w-full text-darkb border-darkb focus:outline-none"
                   placeholder="Username"
-                  required
-                />
+                  required />
               </div>
 
               <div className="w-full xl:w-2/3 mb-3">
@@ -74,7 +81,7 @@ export default function Login() {
                   name="password"
                   onChange={handleChange}
                   type="password"
-                  className="border px-4 py-2 rounded-full w-full"
+                  className="border px-4 py-2 rounded-full w-full text-darkb border-darkb focus:outline-none"
                   placeholder="Password"
                   required
                 />
@@ -82,14 +89,14 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="border rounded-full px-6 py-2 bg-primary text-white mb-2"
+                className="border rounded-full px-6 py-2 bg-primary border-primary hover:bg-sky-700 hover:border-sky-700 shadow-md hover:shadow-2xl cursor-pointer duration-300  text-white font-poppins mb-2"
               >
                 Login
               </button>
 
-              <p className="text-white">
+              <p className="text-darkb font-poppins">
                 Belum punya akun?{" "}
-                <Link href="/signup" className="font-semibold">
+                <Link href="/signup" className="font-semibold text-darkb">
                   Sign Up
                 </Link>
               </p>
