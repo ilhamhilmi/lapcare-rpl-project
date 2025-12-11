@@ -19,6 +19,44 @@ export default function Konsultasi() {
     }, []);
 
     const [fileName, setFileName] = useState("Belum ada file");
+    const [nama, setNama] = useState("");
+    const [perangkat, setPerangkat] = useState("");
+    const [pesan, setPesan] = useState("");
+    const [file, setFile] = useState<File | null>(null);
+
+    const handleSubmit = async () => {
+        try {
+            const formData = new FormData();
+            formData.append("nama", nama);
+            formData.append("perangkat", perangkat);
+            formData.append("pesan", pesan);
+            if (file) formData.append("foto", file);
+
+            const res = await fetch("/api/konsultasi", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!res.ok) {
+                const err = await res.json();
+                alert("Gagal mengirim: " + err.message);
+                return;
+            }
+
+            const data = await res.json();
+            alert(data.message);
+
+            // Reset form
+            setNama("");
+            setPerangkat("");
+            setPesan("");
+            setFile(null);
+            setFileName("Belum ada file");
+
+        } catch (error) {
+            alert("Terjadi kesalahan: " + error);
+        }
+    };
 
     return (
         <div>
@@ -39,13 +77,22 @@ export default function Konsultasi() {
                 <div className="container mx-auto">
                     <div className="flex flex-col items-center justify-center text-center">
                         <div className="w-full flex items-center justify-center">
-                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-darkb rounded-full text-darkb w-3/4 xl:w-1/2 mb-3" placeholder="Nama" />
+                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-darkb rounded-full text-darkb w-3/4 xl:w-1/2 mb-3" placeholder="Nama"
+                                value={nama}
+                                onChange={(e) => setNama(e.target.value)}
+                            />
                         </div>
                         <div className="w-full flex items-center justify-center">
-                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-darkb rounded-full text-darkb w-3/4 xl:w-1/2 mb-3" placeholder="Perangkat" />
+                            <input type="text" className="border focus:outline-none px-4 py-2 font-poppins border-darkb rounded-full text-darkb w-3/4 xl:w-1/2 mb-3" placeholder="Perangkat"
+                                value={perangkat}
+                                onChange={(e) => setPerangkat(e.target.value)}
+                            />
                         </div>
                         <div className="w-full flex items-center justify-center">
-                            <textarea className="border focus:outline-none px-4 py-2 font-poppins border-darkb rounded-full text-darkb w-3/4 xl:w-1/2 mb-3" placeholder="Tulis kendala yang kamu alami" />
+                            <textarea className="border focus:outline-none px-4 py-2 font-poppins border-darkb rounded-full text-darkb w-3/4 xl:w-1/2 mb-3" placeholder="Tulis kendala yang kamu alami"
+                                value={pesan}
+                                onChange={(e) => setPesan(e.target.value)}
+                            />
                         </div>
                         <div className="w-full flex items-center justify-center mb-3">
                             <label htmlFor="uploadFoto" className="flex items-center justify-center border border-dashed border-darkb rounded-full w-3/4 xl:w-1/2 px-4 py-3 font-poppins text-darkb cursor-pointer hover:border-sky-hover:text-sky-600 hover:shadow transition">
@@ -63,12 +110,13 @@ export default function Konsultasi() {
                             <input id="uploadFoto" type="file" accept="image/*" className="hidden"
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                     if (e.target.files && e.target.files.length > 0) {
+                                        setFile(e.target.files[0]);
                                         setFileName(e.target.files[0].name);
                                     }
                                 }} />
                         </div>
                         <div className="flex flex-col items-center justify-center">
-                            <button className="border rounded-full px-6 py-2 font-poppins border-primary bg-primary text-white cursor-pointer hover:bg-sky-500 hover:border-sky-500 shadow-md hover:shadow-2xl duration-300">Kirim</button>
+                            <button onClick={handleSubmit} className="border rounded-full px-6 py-2 font-poppins border-primary bg-primary text-white cursor-pointer hover:bg-sky-500 hover:border-sky-500 shadow-md hover:shadow-2xl duration-300">Kirim</button>
                         </div>
                     </div>
                 </div>

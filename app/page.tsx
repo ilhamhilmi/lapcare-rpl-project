@@ -43,7 +43,7 @@ export default function Home() {
             <Link href="/guide" className="border font-poppins px-10 py-2 rounded-full text-white bg-transparent border-white cursor-pointer hover:bg-white hover:text-darkb transition duration-300">
               Cari Panduan
             </Link>
-            <Link href="/" className="border font-poppins px-8 py-2 rounded-full text-white bg-primary border-primary cursor-pointer hover:bg-sky-700 hover:border-sky-700 transition duration-300">
+            <Link href="/konsultasi" className="border font-poppins px-8 py-2 rounded-full text-white bg-primary border-primary cursor-pointer hover:bg-sky-700 hover:border-sky-700 transition duration-300">
               Konsultasi Sekarang
             </Link>
           </div>

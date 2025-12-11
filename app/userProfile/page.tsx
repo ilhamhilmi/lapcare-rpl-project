@@ -8,7 +8,14 @@ import NavbarClient from "../components/NavbarClient";
 import { useRouter } from "next/navigation";
 
 export default function userProfile() {
+  const handleLogout = async () => {
+    await fetch("/api/logout", {
+      method: "POST",
+      credentials: "include",
+    });
 
+    window.location.href = "/login";
+  };
   return (
     <div>
       <NavbarClient />
@@ -35,7 +42,7 @@ export default function userProfile() {
 
             <div className="flex flex-col items-center justify-center space-y-2 w-full xl:w-2/3 text-center">
               <Link href="/userProfile/editProfile" className="border rounded-full px-6 py-2 font-poppins border-primary bg-primary hover:bg-sky-700 hover:border-sky-700 shadow-md hover:shadow-2xl duration-300 text-white cursor-pointer w-full">Edit Profile</Link>
-              <button className="border rounded-full px-6 py-2 font-poppins border-red-600 bg-red-600 hover:bg-red-800 hover:border-red-800 shadow-md hover:shadow-2xl duration-300 text-white cursor-pointer w-full">Logout</button>
+              <button onClick={handleLogout} className="border rounded-full px-6 py-2 font-poppins border-red-600 bg-red-600 hover:bg-red-800 hover:border-red-800 shadow-md hover:shadow-2xl duration-300 text-white cursor-pointer w-full">Logout</button>
             </div>
           </div>
         </div>
