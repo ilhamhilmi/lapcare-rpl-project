@@ -9,6 +9,7 @@ export function middleware(request: NextRequest) {
   const protectedRoutes = [
     "/guide",
     "/konsultasi",
+    "/userProfile",
     "/homeService"
   ];
 
@@ -30,6 +31,7 @@ export const config = {
     "/guide/:path*",
     "/konsultasi/:path*",
     "/homeService/:path*",
+    "/userProfile/:path*",
     "/login"
   ],
 };
