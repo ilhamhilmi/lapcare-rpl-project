@@ -24,7 +24,7 @@ export default function hardsikSSD() {
             <section className="bg-slate-200 pt-32">
                 <div className="container mx-auto">
                     <div className="flex justify-center items-center mb-5">
-                        <h1 className="text-darkb font-poppins text-2xl 2xl:text-3xl font-semibold border-b pb-5 border-secondary">Panduan Software Laptop</h1>
+                        <h1 className="text-darkb font-poppins text-2xl 2xl:text-3xl font-semibold border-b pb-5 border-secondary">Panduan Hardware Komputer</h1>
                     </div>
                     <div className="flex justify-center items-center px-4">
                         <p className="text-darkb text-center text-4xl xl:text-5xl font-poppins">Hardisk / SSD Tidak Terbaca</p>
