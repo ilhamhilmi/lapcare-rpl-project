@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   }
 
   const [users]: any = await db.query(
-    "SELECT * FROM users WHERE username = ?",
+    "SELECT * FROM user WHERE username = ?",
     [username]
   );
 

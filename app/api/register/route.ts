@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   }
 
   const [check]: any = await db.query(
-    "SELECT id FROM users WHERE username = ? OR email = ?",
+    "SELECT id FROM user WHERE username = ? OR email = ?",
     [username, email]
   );
 
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   await db.query(
-    "INSERT INTO users (email, no_tlp, username, password) VALUES (?, ?, ?, ?)",
+    "INSERT INTO user (email, no_tlp, username, password) VALUES (?, ?, ?, ?)",
     [email, no_tlp, username, hashedPassword]
   );
 

@@ -5,19 +5,31 @@ export function middleware(request: NextRequest) {
   const session = request.cookies.get("sessionLogin")?.value;
   const { pathname } = request.nextUrl;
 
-  // JEGAL SERVICES JIKA BELUM LOGIN
-  if (!session && pathname.startsWith("/guide")) {
+  // daftar halaman yang wajib login
+  const protectedRoutes = [
+    "/guide",
+    "/konsultasi",
+    "/homeService"
+  ];
+
+  // CEK: kalau belum login dan menuju salah satu protected route
+  if (!session && protectedRoutes.some(route => pathname.startsWith(route))) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // JEGAL LOGIN JIKA SUDAH LOGIN
+  // CEK: kalau sudah login dan mencoba buka /login
   if (session && pathname === "/login") {
     return NextResponse.redirect(new URL("/guide", request.url));
   }
 
-  return NextResponse.next(); // INI WAJIB ADA
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/guide/:path*", "/login"],
+  matcher: [
+    "/guide/:path*",
+    "/konsultasi/:path*",
+    "/homeService/:path*",
+    "/login"
+  ],
 };
