@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     await db.end();
 
     return NextResponse.json({
-      message: "Data berhasil disimpan",
+      message: "Permintaan mu sudah terkirim, Kami akan segera menghubungi anda",
       data: {
         nama,
         perangkat,

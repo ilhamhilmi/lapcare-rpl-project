@@ -42,23 +42,44 @@ export default function NavbarClient() {
       <div className="container mx-auto">
 
         {/* MOBILEEEEEEEEEEEEEEEEEE */}
-        <div className="lg:hidden">
-          <nav className="w-full">
-            <div className="flex items-center justify-between mx-5 my-4">
-              <button onClick={toggleMenu} className="cursor-pointer border px-4 py-2 rounded-full backdrop-blur-xl bg-darkb/30 shadow-xl border-secondary">
-                <span className="hamburger-line"></span>
-                <span className="hamburger-line"></span>
-                <span className="hamburger-line"></span>
-              </button>
-              <Link href="/login" className="border px-3 py-2 rounded-xl font-poppins bg-primary border-primary font-semibold hover:bg-sky-700 hover:border-sky-700 text-white">Sign Up | Login</Link>
-              <Link href="/userProfile">
-                <div className="border p-2 rounded-full border-white bg-white hover:bg-slate-300 hover:border-slate-300 duration-200">
-                  <Image src={userIcon} alt="userIcon" className="w-5" />
-                </div>
-              </Link>
-            </div>
-          </nav>
-        </div>
+        {!loggedIn && (
+          <div className="lg:hidden">
+            <nav className="w-full">
+              <div className="flex items-center justify-between mx-5 my-4">
+                <button onClick={toggleMenu} className="cursor-pointer border px-4 py-2 rounded-full backdrop-blur-xl bg-darkb/30 shadow-xl border-secondary">
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                </button>
+                <Link href="/login" className="border px-3 py-2 rounded-xl font-poppins bg-primary border-primary font-semibold hover:bg-sky-700 hover:border-sky-700 text-white">Sign Up | Login</Link>
+                {/* <Link href="/userProfile">
+                  <div className="border p-2 rounded-full border-white bg-white hover:bg-slate-300 hover:border-slate-300 duration-200">
+                    <Image src={userIcon} alt="userIcon" className="w-5" />
+                  </div>
+                </Link> */}
+              </div>
+            </nav>
+          </div>
+        )}
+        {loggedIn && (
+          <div className="lg:hidden">
+            <nav className="w-full">
+              <div className="flex items-center justify-between mx-5 my-4">
+                <button onClick={toggleMenu} className="cursor-pointer border px-4 py-2 rounded-full backdrop-blur-xl bg-darkb/30 shadow-xl border-secondary">
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                  <span className="hamburger-line"></span>
+                </button>
+                {/* <Link href="/login" className="border px-3 py-2 rounded-xl font-poppins bg-primary border-primary font-semibold hover:bg-sky-700 hover:border-sky-700 text-white">Sign Up | Login</Link> */}
+                <Link href="/userProfile">
+                  <div className="border p-2 rounded-full border-white bg-white hover:bg-slate-300 hover:border-slate-300 duration-200">
+                    <Image src={userIcon} alt="userIcon" className="w-5" />
+                  </div>
+                </Link>
+              </div>
+            </nav>
+          </div>
+        )}
 
         {isOpen && (
           <nav className="absolute bg-darkb/30 backdrop-blur-3xl left-3 top-full px-8 py-5 border rounded-md border-secondary shadow-xl">

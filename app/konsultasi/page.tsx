@@ -3,12 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import NavbarClient from "../components/NavbarClient";
 import FooterClient from "../components/FooterClient";
-import Image from "next/image";
-import Hardware from "@/assets/layanan-kami/hardware-fixing.jpg"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Link from "next/link";
-import { format } from "path";
+import toast from "react-hot-toast";
+
 
 export default function Konsultasi() {
     useEffect(() => {
@@ -23,6 +21,13 @@ export default function Konsultasi() {
     const [perangkat, setPerangkat] = useState("");
     const [pesan, setPesan] = useState("");
     const [file, setFile] = useState<File | null>(null);
+
+    const [form, setForm] = useState({
+        nama: "",
+        perangkat: "",
+        pesan: "",
+        foto: "",
+    });
 
     const handleSubmit = async () => {
         try {
@@ -39,12 +44,17 @@ export default function Konsultasi() {
 
             if (!res.ok) {
                 const err = await res.json();
-                alert("Gagal mengirim: " + err.message);
+                toast.error("Gagal mengirim: " + err.message);
+                return;
+            }
+
+            if (!form.nama || !form.perangkat || !form.pesan || !form.foto) {
+                toast.error("Semua field wajib diisi!");
                 return;
             }
 
             const data = await res.json();
-            alert(data.message);
+            toast.success(data.message);
 
             // Reset form
             setNama("");

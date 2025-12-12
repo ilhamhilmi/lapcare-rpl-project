@@ -76,12 +76,12 @@ export default function Home() {
               <div className="border border-darkb flex-col justify-items-center text-center space-y-4 px-8 py-5 rounded-xl shadow-xl bg-white/5 backdrop-blur-md" data-aos="fade-up">
                 <Image src={chatServices} alt="info" className="w-[125px]" />
                 <h1 className="text-darkb font-poppins max-w-[225px]">Konsultasi Chat Online Dengan Teknisi Kami</h1>
-                <button className="border px-3 py-1 rounded-full font-poppins text-white bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Mulai Chat</button>
+                <Link href="/konsultasi" className="border px-3 py-1 rounded-full font-poppins text-white bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Konsultasi Sekarang</Link>
               </div>
               <div className="border border-darkb flex-col justify-items-center text-center space-y-4 px-8 py-5 rounded-xl shadow-xl bg-white/5 backdrop-blur-md" data-aos="fade-up">
                 <Image src={house} alt="info" className="w-[125px]" />
                 <h1 className="text-darkb font-poppins max-w-[225px]">Panggil Teknisi Kami Ke Rumah Anda</h1>
-                <button className="border px-3 py-1 rounded-full font-poppins text-white bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Pesan Layanan</button>
+                <Link href="/homeService" className="border px-3 py-1 rounded-full font-poppins text-white bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300 cursor-pointer">Pesan Layanan</Link>
               </div>
             </div>
           </div>
