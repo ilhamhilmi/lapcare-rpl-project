@@ -5,7 +5,12 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const { email, no_tlp, username, password } = await req.json();
 
-  if (!email || !no_tlp || !username || !password) {
+  if (
+    !email?.trim() ||
+    !no_tlp?.trim() ||
+    !username?.trim() ||
+    !password?.trim()
+  ) {
     return NextResponse.json(
       { message: "Semua field wajib diisi" },
       { status: 400 }
