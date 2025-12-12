@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
   // SAVE USER ID IN COOKIE
   response.cookies.set("user_id", String(user.id), {
-    httpOnly: true,
+    httpOnly: false,
     path: "/",
     sameSite: "lax",
     maxAge: 60 * 60 * 24,
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
 
   // Optional: sessionLogin
   response.cookies.set("sessionLogin", "true", {
-    httpOnly: true,
+    httpOnly: false,
     path: "/",
     sameSite: "lax",
     maxAge: 60 * 60 * 24,

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import userIcon from "@/assets/user-icon-svgrepo-com.svg"
@@ -13,6 +14,19 @@ export default function NavbarClient() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    const cookies = document.cookie;
+
+    // cek apakah cookie "user_id" ada
+    if (cookies.includes("user_id=")) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [pathname]);
 
   const handleLogout = async () => {
     await fetch("/api/logout", {
@@ -58,28 +72,45 @@ export default function NavbarClient() {
         )}
 
         {/* DESKTOOOOOOOOOOOOOOOOOPP */}
-        <div className="hidden lg:flex justify-center items-center">
-          <div className="border border-white px-10 rounded-2xl mt-5 backdrop-blur-xl bg-darkb/30 shadow-xl">
-            <nav className="py-2 space-x-8 flex items-center justify-center">
-              <Link href="/" className={pathname === '/' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Beranda</Link>
-              <Link href="/about" className={pathname === '/about' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Tentang Kami</Link>
-              <Link href="/guide" className={pathname === '/guide' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Panduan</Link>
-              <Link href="/layanan" className={pathname === '/layanan' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Layanan Kami</Link>
-              <Link href="/signup" className={pathname === '/signup' ? 'border px-3 py-2 rounded-xl font-poppins  border-white text-darkb bg-white hover:text-darkb duration-200' : 'border px-3 py-2 rounded-xl font-poppins  border-white text-white hover:bg-white hover:text-darkb duration-200'}>Sign Up</Link>
-              <Link href="/login" className="border px-3 py-2 rounded-xl font-poppins bg-primary border-primary hover:bg-sky-700 hover:border-sky-700 duration-200 text-white">Login</Link>
-              <Link href="/userProfile">
+        {!loggedIn && (
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="border border-white px-10 rounded-2xl mt-5 backdrop-blur-xl bg-darkb/30 shadow-xl">
+              <nav className="py-2 space-x-8 flex items-center justify-center">
+                <Link href="/" className={pathname === '/' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Beranda</Link>
+                <Link href="/about" className={pathname === '/about' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Tentang Kami</Link>
+                <Link href="/guide" className={pathname === '/guide' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Panduan</Link>
+                <Link href="/layanan" className={pathname === '/layanan' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Layanan Kami</Link>
+                <Link href="/signup" className={pathname === '/signup' ? 'border px-3 py-2 rounded-xl font-poppins  border-white text-darkb bg-white hover:text-darkb duration-200' : 'border px-3 py-2 rounded-xl font-poppins  border-white text-white hover:bg-white hover:text-darkb duration-200'}>Sign Up</Link>
+                <Link href="/login" className="border px-3 py-2 rounded-xl font-poppins bg-primary border-primary hover:bg-sky-700 hover:border-sky-700 duration-200 text-white">Login</Link>
+                {/* <Link href="/userProfile">
                 <div className="border p-2 rounded-full border-white bg-white hover:bg-slate-300 hover:border-slate-300 duration-200">
                   <Image src={userIcon} alt="userIcon" className="w-5" />
                 </div>
-              </Link>
-              {/* <button
-                onClick={handleLogout}
-                className="bg-red-500 hover:bg-red-600 px-8 py-3 rounded font-semibold">
-                Logout
-              </button> */}
-            </nav>
+              </Link> */}
+              </nav>
+            </div>
           </div>
-        </div>
+        )}
+
+        {loggedIn && (
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="border border-white px-10 rounded-2xl mt-5 backdrop-blur-xl bg-darkb/30 shadow-xl">
+              <nav className="py-2 space-x-8 flex items-center justify-center">
+                <Link href="/" className={pathname === '/' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Beranda</Link>
+                <Link href="/about" className={pathname === '/about' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Tentang Kami</Link>
+                <Link href="/guide" className={pathname === '/guide' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Panduan</Link>
+                <Link href="/layanan" className={pathname === '/layanan' ? 'text-darkb bg-white border px-3 py-2 rounded-xl border-transparent font-poppins' : 'text-white hover:text-darkb  hover:bg-white duration-200 py-2 rounded-xl px-3 border-transparent font-poppins'}>Layanan Kami</Link>
+                {/* <Link href="/signup" className={pathname === '/signup' ? 'border px-3 py-2 rounded-xl font-poppins  border-white text-darkb bg-white hover:text-darkb duration-200' : 'border px-3 py-2 rounded-xl font-poppins  border-white text-white hover:bg-white hover:text-darkb duration-200'}>Sign Up</Link>
+              <Link href="/login" className="border px-3 py-2 rounded-xl font-poppins bg-primary border-primary hover:bg-sky-700 hover:border-sky-700 duration-200 text-white">Login</Link> */}
+                <Link href="/userProfile">
+                  <div className="border p-2 rounded-full border-white bg-white hover:bg-slate-300 hover:border-slate-300 duration-200">
+                    <Image src={userIcon} alt="userIcon" className="w-5" />
+                  </div>
+                </Link>
+              </nav>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
