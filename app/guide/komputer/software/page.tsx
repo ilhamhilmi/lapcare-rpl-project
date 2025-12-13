@@ -35,50 +35,50 @@ export default function softwareKomputer() {
             <section className="bg-slate-200 pt-16 pb-16 px-6">
                 <div className="container mx-auto bg-gradient-to-tl from-[#1d293d] via-[#23385e] to-[#3b82f6] border border-secondary rounded-xl shadow-xl p-5">
                     <div className="grid grid-cols-2 xl:grid-cols-4 gap-5">
-                        <Link href="/guide/laptop/software/laptoplemot" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/lemot" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Laptop lemot saat dinyalakan</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Terasa Lemot Padahal Baru Nyala</h1>
                             </div>
                         </Link>
-                        <Link href="" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/notresponding" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Lambat saat membuka aplikasi</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Aplikasi Not Responding</h1>
                             </div>
                         </Link>
-                        <Link href="" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/wifi" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">WiFi tidak muncul</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Tidak Bisa Terhubung Ke Wi-Fi</h1>
                             </div>
                         </Link>
-                        <Link href="" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/penyimpanan" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Icon/taskbar hilang</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Penyimpanan Penuh</h1>
                             </div>
                         </Link>
-                        <Link href="" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/iklanmalware" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">CPU usage tinggi</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Sering Muncul Iklan / Terkena Malware Virus</h1>
                             </div>
                         </Link>
-                        <Link href="" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/installapp" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Aplikasi tidak bisa dibuka</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Tidak Bisa Install Aplikasi</h1>
                             </div>
                         </Link>
-                        <Link href="" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/winupd" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Windows update error</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Windows Update Selalu Gagal & Stuck</h1>
                             </div>
                         </Link>
-                        <Link href="" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
+                        <Link href="/guide/komputer/software/oserror" className="border text-center p-4 flex items-center justify-center rounded-xl border-secondary bg-white/5 backdrop-blur-2xl hover:bg-white/15 duration-250">
                             <div>
-                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Bluetooth tidak muncul</h1>
+                                <h1 className="font-poppins text-slate-200 font-semibold text-lg">Sistem Operasi Sering Error / Crash</h1>
                             </div>
                         </Link>
                     </div>
                 </div>
                 <div className="text-center flex items-center justify-center mt-5">
-                    <Link href="/" className="font-poppins text-white bg-primary border-primary px-4 py-2 rounded-full hover:bg-sky-600 hover:border-sky-600 shadow-xl duration-250">Punya Kendala lain? Hubungi Kami</Link>
+                    <Link href="/konsultasi" className="font-poppins text-white bg-primary border-primary px-4 py-2 rounded-full hover:bg-sky-600 hover:border-sky-600 shadow-xl duration-250">Punya Kendala lain? Konsultasi Sekarang</Link>
                 </div>
             </section>
 

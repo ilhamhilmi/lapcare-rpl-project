@@ -78,7 +78,7 @@ export default function hardwareKomputer() {
                     </div>
                 </div>
                 <div className="text-center flex items-center justify-center mt-5">
-                    <Link href="/" className="font-poppins text-white bg-primary border-primary px-4 py-2 rounded-full hover:bg-sky-600 hover:border-sky-600 shadow-xl duration-250">Punya Kendala lain? Hubungi Kami</Link>
+                    <Link href="/konsultasi" className="font-poppins text-white bg-primary border-primary px-4 py-2 rounded-full hover:bg-sky-600 hover:border-sky-600 shadow-xl duration-250">Punya Kendala lain? Konsultasi Sekarang</Link>
                 </div>
             </section>
 
