@@ -18,11 +18,12 @@ export default function homeServiceTable() {
                             <tr>
                                 <th className="px-4 py-3">No</th>
                                 <th className="px-4 py-3">Tanggal Dibuat</th>
+                                <th className="px-4 py-3">Username</th>
                                 <th className="px-4 py-3">Nama</th>
                                 <th className="px-4 py-3">Perangkat</th>
                                 <th className="px-4 py-3">Alamat Lengkap</th>
+                                <th className="px-4 py-3">No. Telp Akun</th>
                                 <th className="px-4 py-3">Nomor Cadangan</th>
-                                <th className="px-4 py-3">Permintaan Layanan</th>
                                 <th className="px-4 py-3">Pesan</th>
                                 <th className="px-4 py-3">Foto</th>
                                 <th className="px-4 py-3">Status</th>
@@ -38,6 +39,9 @@ export default function homeServiceTable() {
                                     <h1>12-12-2025</h1>
                                 </td>
                                 <td className="px-4 py-3">
+                                    <h1>mpruy</h1>
+                                </td>
+                                <td className="px-4 py-3">
                                     <h1>Ilham</h1>
                                 </td>
                                 <td className="px-4 py-3">
@@ -50,7 +54,7 @@ export default function homeServiceTable() {
                                     <h1>081202020312</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1>13-12-2025</h1>
+                                    <h1>081202020312</h1>
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>Rusak</h1>
@@ -59,7 +63,7 @@ export default function homeServiceTable() {
                                     <h1>budi.jpg</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1 className="border text-center rounded-md border-yellow-500 bg-yellow-500 text-white">Menunggu</h1>
+                                    <h1 className="text-darkb">Menunggu</h1>
                                 </td>
                             </tr>
 
@@ -70,6 +74,9 @@ export default function homeServiceTable() {
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>13-12-2025</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>nabil</h1>
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>Budi</h1>
@@ -84,7 +91,7 @@ export default function homeServiceTable() {
                                     <h1>081202020312</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1>13-12-2025</h1>
+                                    <h1>081202020312</h1>
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>Lemot woy</h1>
@@ -93,7 +100,7 @@ export default function homeServiceTable() {
                                     <h1>budi.jpg</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1 className="border text-center rounded-md border-orange-500 bg-orange-500 text-white">Diproses</h1>
+                                    <h1 className="text-darkb">Diproses</h1>
                                 </td>
                             </tr>
 

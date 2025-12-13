@@ -18,6 +18,7 @@ export default function KonsulTable() {
                             <tr>
                                 <th className="px-4 py-3">No</th>
                                 <th className="px-4 py-3">Tanggal Dibuat</th>
+                                <th className="px-4 py-3">Username</th>
                                 <th className="px-4 py-3">Nama</th>
                                 <th className="px-4 py-3">Perangkat</th>
                                 <th className="px-4 py-3">Pesan</th>
@@ -36,6 +37,9 @@ export default function KonsulTable() {
                                     <h1>12-12-2025</h1>
                                 </td>
                                 <td className="px-4 py-3">
+                                    <h1>mpruy</h1>
+                                </td>
+                                <td className="px-4 py-3">
                                     <h1>Ilham</h1>
                                 </td>
                                 <td className="px-4 py-3">
@@ -51,7 +55,7 @@ export default function KonsulTable() {
                                     <h1>089349314123</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1 className="border text-center rounded-md border-yellow-500 bg-yellow-500 text-white">Menunggu</h1>
+                                    <h1 className="text-darkb">Menunggu</h1>
                                 </td>
                             </tr>
 
@@ -62,6 +66,9 @@ export default function KonsulTable() {
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>13-12-2025</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>jampruy</h1>
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>Budi</h1>
@@ -79,7 +86,7 @@ export default function KonsulTable() {
                                     <h1>089349314123</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1 className="border text-center rounded-md border-orange-500 bg-orange-500 text-white">Diproses</h1>
+                                    <h1 className="text-darkb">Diproses</h1>
                                 </td>
                             </tr>
 
