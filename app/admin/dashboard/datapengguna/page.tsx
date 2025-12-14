@@ -1,8 +1,38 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import AdminSidebar from "@/app/components/AdminSidebar";
 
+interface User {
+    id: number;
+    email: string;
+    username: string;
+    nama: string;
+    no_tlp: string;
+    password: string;
+    created_at: string;
+}
+
 export default function dataPengguna() {
+    const [users, setUsers] = useState<User[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const res = await fetch("/api/datapengguna");
+                const data = await res.json();
+                setUsers(data);
+            } catch (error) {
+                console.error("Gagal mengambil data pengguna:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
     return (
         <div className="flex">
             {/* Sidebar */}
@@ -10,7 +40,9 @@ export default function dataPengguna() {
 
             {/* Konten */}
             <div className="flex-1 p-6">
-                <h1 className="text-2xl font-semibold mb-4 font-poppins text-darkb">Data Pengguna</h1>
+                <h1 className="text-2xl font-semibold mb-4 font-poppins text-darkb">
+                    Data Pengguna
+                </h1>
 
                 <div className="overflow-x-auto rounded-xl shadow bg-white">
                     <table className="min-w-full text-sm text-left">
@@ -26,49 +58,44 @@ export default function dataPengguna() {
                         </thead>
 
                         <tbody className="divide-y">
-                            <tr className="hover:bg-gray-50">
-                                <td className="px-4 py-3">
-                                    <h1>1</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>12-12-2025</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>nabilmpruy@gmail.com</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>nabil</h1>
-                                </td>
-                                 <td className="px-4 py-3">
-                                    <h1>089349314123</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>foto.jpg</h1>
-                                </td>
-                            </tr>
-
-                            {/* baris lain bisa duplikat h1 sama aja */}
-                            <tr className="hover:bg-gray-50">
-                                <td className="px-4 py-3">
-                                    <h1>2</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>13-12-2025</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>jampruympruy@gmail.com</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>mpruy</h1>
-                                </td>
-                                 <td className="px-4 py-3">
-                                    <h1>089349314123</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>123</h1>
-                                </td>
-                            </tr>
-
+                            {loading ? (
+                                <tr>
+                                    <td colSpan={6} className="px-4 py-6 text-center">
+                                        Memuat data...
+                                    </td>
+                                </tr>
+                            ) : users.length === 0 ? (
+                                <tr>
+                                    <td colSpan={6} className="px-4 py-6 text-center">
+                                        Data pengguna tidak tersedia
+                                    </td>
+                                </tr>
+                            ) : (
+                                users.map((user, index) => (
+                                    <tr key={user.id} className="hover:bg-gray-50">
+                                        <td className="px-4 py-3">
+                                            <h1>{index + 1}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>
+                                                {new Date(user.created_at).toLocaleDateString("id-ID")}
+                                            </h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{user.email}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{user.username}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{user.no_tlp}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{user.password}</h1>
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
                         </tbody>
                     </table>
                 </div>
