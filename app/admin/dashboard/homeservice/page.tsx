@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import AdminSidebar from "@/app/components/AdminSidebar";
 
+<<<<<<< HEAD
 interface HomeService {
   id: number;
   nama: string;
@@ -129,4 +130,114 @@ export default function HomeServiceTable() {
       </div>
     </div>
   );
+=======
+export default function homeServiceTable() {
+    return (
+        <div className="flex">
+            {/* Sidebar */}
+            <AdminSidebar />
+
+            {/* Konten */}
+            <div className="flex-1 p-6">
+                <h1 className="text-2xl font-semibold mb-4 font-poppins text-darkb">Data Home Service</h1>
+
+                <div className="overflow-x-auto rounded-xl shadow bg-white">
+                    <table className="min-w-full text-sm text-left">
+                        <thead className="bg-gray-100 text-gray-700">
+                            <tr>
+                                <th className="px-4 py-3">No</th>
+                                <th className="px-4 py-3">Tanggal Dibuat</th>
+                                <th className="px-4 py-3">Username</th>
+                                <th className="px-4 py-3">Nama</th>
+                                <th className="px-4 py-3">Perangkat</th>
+                                <th className="px-4 py-3">Alamat Lengkap</th>
+                                <th className="px-4 py-3">No. Telp Akun</th>
+                                <th className="px-4 py-3">Nomor Cadangan</th>
+                                <th className="px-4 py-3">Pesan</th>
+                                <th className="px-4 py-3">Foto</th>
+                                <th className="px-4 py-3">Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody className="divide-y">
+                            <tr className="hover:bg-gray-50">
+                                <td className="px-4 py-3">
+                                    <h1>1</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>12-12-2025</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>mpruy</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Ilham</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Laptop</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Jl. Cengkareng</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>081202020312</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>081202020312</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Rusak</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>budi.jpg</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1 className="text-darkb">Menunggu</h1>
+                                </td>
+                            </tr>
+
+                            {/* baris lain bisa duplikat h1 sama aja */}
+                            <tr className="hover:bg-gray-50">
+                                <td className="px-4 py-3">
+                                    <h1>2</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>13-12-2025</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>nabil</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Budi</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>PC</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Jl. Bambu Apus</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>081202020312</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>081202020312</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Lemot woy</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>budi.jpg</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1 className="text-darkb">Diproses</h1>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+>>>>>>> 86d15badaec9438f19e5049a6f0716d7a153e6a0
 }
