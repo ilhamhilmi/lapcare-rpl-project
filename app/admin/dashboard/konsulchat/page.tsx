@@ -57,7 +57,6 @@ export default function KonsulTable() {
                         </thead>
 
                         <tbody className="divide-y">
-<<<<<<< HEAD
                             {loading ? (
                                 <tr>
                                     <td colSpan={6} className="px-4 py-6 text-center">
@@ -102,66 +101,6 @@ export default function KonsulTable() {
                                         </td>
                                         <td className="px-4 py-3">
                                     <h1 className="border text-center rounded-md border-orange-500 bg-orange-500 text-white">Diproses</h1>
-=======
-                            <tr className="hover:bg-gray-50">
-                                <td className="px-4 py-3">
-                                    <h1>1</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>12-12-2025</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>mpruy</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Ilham</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Laptop</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Layar kedip-kedip</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>foto.jpg</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>089349314123</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1 className="text-darkb">Menunggu</h1>
-                                </td>
-                            </tr>
-
-                            {/* baris lain bisa duplikat h1 sama aja */}
-                            <tr className="hover:bg-gray-50">
-                                <td className="px-4 py-3">
-                                    <h1>2</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>13-12-2025</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>jampruy</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Budi</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>PC</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Restart sendiri</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>budi.jpg</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>089349314123</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1 className="text-darkb">Diproses</h1>
->>>>>>> 86d15badaec9438f19e5049a6f0716d7a153e6a0
                                 </td>
 
                                     </tr>
