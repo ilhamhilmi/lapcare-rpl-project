@@ -1,8 +1,36 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import AdminSidebar from "@/app/components/AdminSidebar";
 
+interface KonsulTable {
+    id: number;
+    nama: string;
+    nomorHP: string;
+    perangkat: string;
+    pesan: string;
+    foto: string | null;
+    created_at: string;
+}
+
 export default function KonsulTable() {
+    const [KonsulTable, setKonsulTable] = useState<KonsulTable[]>([]);
+        const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+        const fetchKonsulTable = async () => {
+            try {
+                const res = await fetch("/api/konsulchat");
+                const data = await res.json();
+                setKonsulTable(data);
+            } catch (error) {
+                console.error("Gagal mengambil data pengguna:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchKonsulTable();
+    }, []);
     return (
         <div className="flex">
             {/* Sidebar */}
@@ -28,60 +56,55 @@ export default function KonsulTable() {
                         </thead>
 
                         <tbody className="divide-y">
-                            <tr className="hover:bg-gray-50">
-                                <td className="px-4 py-3">
-                                    <h1>1</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>12-12-2025</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Ilham</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Laptop</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Layar kedip-kedip</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>foto.jpg</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>089349314123</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1 className="border text-center rounded-md border-yellow-500 bg-yellow-500 text-white">Menunggu</h1>
-                                </td>
-                            </tr>
-
-                            {/* baris lain bisa duplikat h1 sama aja */}
-                            <tr className="hover:bg-gray-50">
-                                <td className="px-4 py-3">
-                                    <h1>2</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>13-12-2025</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Budi</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>PC</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>Restart sendiri</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>budi.jpg</h1>
-                                </td>
-                                <td className="px-4 py-3">
-                                    <h1>089349314123</h1>
-                                </td>
-                                <td className="px-4 py-3">
+                            {loading ? (
+                                <tr>
+                                    <td colSpan={6} className="px-4 py-6 text-center">
+                                        Memuat data...
+                                    </td>
+                                </tr>
+                            ) : KonsulTable.length === 0 ? (
+                                <tr>
+                                    <td colSpan={6} className="px-4 py-6 text-center">
+                                        Data pengguna tidak tersedia
+                                    </td>
+                                </tr>
+                            ) : (
+                                KonsulTable.map((konsultasi, index) => (
+                                    <tr key={konsultasi.id} className="hover:bg-gray-50">
+                                        <td className="px-4 py-3">
+                                            <h1>{index + 1}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>
+                                                {new Date(konsultasi.created_at).toLocaleDateString("id-ID")}
+                                            </h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{konsultasi.nama}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{konsultasi.perangkat}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{konsultasi.pesan}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <img
+                                                src={`/uploads/${konsultasi.foto}`}
+                                                alt="Foto Konsul"
+                                                className="w-10 h-10 rounded-full object-cover"
+                                            />
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <h1>{konsultasi.nomorHP}</h1>
+                                        </td>
+                                        <td className="px-4 py-3">
                                     <h1 className="border text-center rounded-md border-orange-500 bg-orange-500 text-white">Diproses</h1>
                                 </td>
-                            </tr>
+
+                                    </tr>
+                                ))
+                            )}
 
                         </tbody>
                     </table>
