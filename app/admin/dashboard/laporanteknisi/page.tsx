@@ -19,12 +19,14 @@ export default function KonsulTable() {
                                 <th className="px-4 py-3">No</th>
                                 <th className="px-4 py-3">Id Home Service</th>
                                 <th className="px-4 py-3">Tanggal Laporan</th>
-                                <th className="px-4 py-3">Username Pengguna</th>
                                 <th className="px-4 py-3">Username Teknisi</th>
-                                <th className="px-4 py-3">Kerusakan</th>
-                                <th className="px-4 py-3">Biaya Sparepart</th>
+                                <th className="px-4 py-3">Username Customer</th>
+                                <th className="px-4 py-3">Detail Kerusakan</th>
                                 <th className="px-4 py-3">Ongkos Perbaikan</th>
-                                <th className="px-4 py-3">Bukti Pembayaran</th>
+                                <th className="px-4 py-3">Biaya Sparepart</th>
+                                <th className="px-4 py-3">Bukti Pembelian Sparepart</th>
+                                <th className="px-4 py-3">Bukti Pembayaran Customer</th>
+                                <th className="px-4 py-3">Status</th>
                             </tr>
                         </thead>
 
@@ -34,7 +36,7 @@ export default function KonsulTable() {
                                     <h1>1</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1>37</h1>
+                                    <h1>24</h1>
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>
@@ -42,19 +44,22 @@ export default function KonsulTable() {
                                     </h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1>MPROY</h1>
+                                    <h1>Adoy Hidayat</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1>Agus Wahyudi</h1>
+                                    <h1>hilmi</h1>
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>LCD kena bos</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1>2.000.000</h1>
+                                    <h1>200.000</h1>
                                 </td>
                                 <td className="px-4 py-3">
-                                    <h1>200.000</h1>
+                                    <h1>200.000.000</h1>
+                                </td>
+                                <td className="px-4 py-3">
+                                    <h1>Foto</h1>
                                 </td>
                                 <td className="px-4 py-3">
                                     <h1>Foto</h1>
