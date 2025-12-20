@@ -11,7 +11,6 @@ import toast from 'react-hot-toast';
 export default function Login() {
 
   const router = useRouter()
-  
   useEffect(() => {
     AOS.init({
       duration: 800,
