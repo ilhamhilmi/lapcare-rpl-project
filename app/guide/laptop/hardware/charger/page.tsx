@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function charger() {
+export default function Charger() {
     useEffect(() => {
         AOS.init({
             duration: 800,

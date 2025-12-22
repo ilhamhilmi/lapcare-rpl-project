@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function hardwareKomputer() {
+export default function HardwareKomputer() {
     useEffect(() => {
         AOS.init({
             duration: 800,

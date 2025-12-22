@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function wifi() {
+export default function Wifi() {
     useEffect(() => {
         AOS.init({
             duration: 800,

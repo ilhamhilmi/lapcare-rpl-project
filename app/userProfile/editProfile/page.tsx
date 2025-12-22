@@ -9,7 +9,7 @@ import showPass from "@/assets/password/eye-alt-svgrepo-com.svg";
 import hidePass from "@/assets/password/eye-slash-alt-svgrepo-com.svg";
 import Image from "next/image";
 
-export default function UserProfile() {
+export default function UserEditProfile() {
   const router = useRouter();
 
   const [form, setForm] = useState({

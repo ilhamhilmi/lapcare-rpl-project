@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function psu() {
+export default function Psu() {
     useEffect(() => {
         AOS.init({
             duration: 800,

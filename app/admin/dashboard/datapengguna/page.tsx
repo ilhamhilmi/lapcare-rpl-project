@@ -13,7 +13,7 @@ interface User {
     created_at: string;
 }
 
-export default function dataPengguna() {
+export default function DataPengguna() {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
 

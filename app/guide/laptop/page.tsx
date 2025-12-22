@@ -9,7 +9,7 @@ import software from "@/assets/guidecategory/software.jpg";
 import Image from "next/image";
 import FooterClient from "@/app/components/FooterClient";
 
-export default function laptopGuide() {
+export default function LaptopGuide() {
     return (
         <div>
             <NavbarClient />

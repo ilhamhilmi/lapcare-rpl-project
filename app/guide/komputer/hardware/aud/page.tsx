@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function audio() {
+export default function Audio() {
     useEffect(() => {
         AOS.init({
             duration: 800,

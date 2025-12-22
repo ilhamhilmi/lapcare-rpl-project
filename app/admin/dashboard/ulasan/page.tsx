@@ -10,7 +10,7 @@ interface Ulasan {
     createdAt: string;
 }
 
-export default function ulasan() {
+export default function Ulasan() {
     const [Ulasan, setUlasan] = useState<Ulasan[]>([]);
         const [loading, setLoading] = useState(true);
 

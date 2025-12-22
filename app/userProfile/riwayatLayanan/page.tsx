@@ -3,7 +3,7 @@
 import Link from "next/link";
 import NavbarClient from '@/app/components/NavbarClient';
 
-export default function riwayatUser() {
+export default function RiwayatUser() {
     return (
         <div>
             <NavbarClient />

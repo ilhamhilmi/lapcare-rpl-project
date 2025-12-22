@@ -11,7 +11,7 @@ import 'aos/dist/aos.css';
 import Link from "next/link";
 import { format } from "path";
 
-export default function layananPage() {
+export default function LayananPage() {
     useEffect(() => {
         AOS.init({
             duration: 800,

@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function oserror() {
+export default function Oserror() {
     useEffect(() => {
         AOS.init({
             duration: 800,

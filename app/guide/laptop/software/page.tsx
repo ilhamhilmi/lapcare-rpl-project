@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from "next/link";
 
-export default function softwareLaptop() {
+export default function SoftwareLaptop() {
     useEffect(() => {
         AOS.init({
             duration: 800,

@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import toast from "react-hot-toast";
 
-export default function laporanTeknisi() {
+export default function LaporanTeknisi() {
     return (
         <div>
             <section className="bg-darkb pt-16 pb-16 min-h-screen flex items-center">
