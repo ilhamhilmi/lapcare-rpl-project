@@ -85,7 +85,7 @@ export default function HomeService() {
     }
   };
 
- return (
+  return (
     <div>
       <NavbarClient />
 
@@ -179,7 +179,7 @@ export default function HomeService() {
             <button
               disabled={loadingUser}
               onClick={handleSubmit}
-              className="mt-5 px-6 py-2 rounded-full bg-primary text-white disabled:opacity-50"
+              className="mt-5 px-6 py-2 border rounded-full bg-primary text-white font-poppins border-primary cursor-pointer hover:bg-sky-500 hover:border-sky-500 shadow-md hover:shadow-2xl duration-300"
             >
               Kirim
             </button>
