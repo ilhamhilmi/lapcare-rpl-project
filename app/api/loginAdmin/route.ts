@@ -44,7 +44,7 @@ export async function POST(req: Request) {
   // COOKIE ADMIN
   response.cookies.set("admin_id", String(admin.id), {
     httpOnly: false,
-    path: "/admin",   // path khusus admin
+    path: "/",   // path khusus admin
     sameSite: "lax",
     maxAge: 60 * 60 * 24, // 1 hari
   });
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
   // ROLE ADMIN TERPISAH
   response.cookies.set("admin_role", "admin", {
     httpOnly: false,
-    path: "/admin",
+    path: "/",
     sameSite: "lax",
     maxAge: 60 * 60 * 24,
   });

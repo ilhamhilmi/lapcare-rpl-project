@@ -1,36 +1,37 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
-// GET DATA HOME SERVICE
+// GET : AMBIL DATA
 export async function GET() {
   try {
     const [rows] = await db.execute(
       `SELECT 
         id,
-        nama,
-        perangkat,
-        alamat_lengkap,
-        nomor_hp,
-        tanggal,
-        kendala,
-        foto,
+        home_service_id,
+        username_customer,
+        username_teknisi,
+        detail_kerusakan,
+        ongkos_perbaikan,
+        biaya_sparepart,
+        bukti_pembelian_sparepart,
+        bukti_pembayaran_customer,
         status,
         created_at
-      FROM home_service
+      FROM laporan_teknisi
       ORDER BY created_at DESC`
     );
 
     return NextResponse.json(rows);
   } catch (error) {
-    console.error("API ERROR:", error);
+    console.error("API ERROR (GET):", error);
     return NextResponse.json(
-      { message: "Gagal mengambil data home service" },
+      { message: "Gagal mengambil data laporan teknisi" },
       { status: 500 }
     );
   }
 }
 
-// UPDATE STATUS
+// POST : UPDATE STATUS
 export async function POST(req: Request) {
   try {
     const { id, status } = await req.json();
@@ -42,6 +43,7 @@ export async function POST(req: Request) {
       );
     }
 
+    // validasi status (penting)
     const allowedStatus = ["pending", "proses", "selesai"];
     if (!allowedStatus.includes(status)) {
       return NextResponse.json(
@@ -51,15 +53,18 @@ export async function POST(req: Request) {
     }
 
     await db.execute(
-      "UPDATE home_service SET status = ? WHERE id = ?",
+      "UPDATE laporan_teknisi SET status = ? WHERE id = ?",
       [status, id]
     );
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      message: "Status berhasil diperbarui",
+    });
   } catch (error) {
-    console.error("UPDATE STATUS ERROR:", error);
+    console.error("API ERROR (POST):", error);
     return NextResponse.json(
-      { message: "Gagal update status" },
+      { message: "Gagal update status laporan" },
       { status: 500 }
     );
   }

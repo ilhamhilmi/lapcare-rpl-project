@@ -11,28 +11,51 @@ interface HomeService {
   tanggal: string;
   kendala: string;
   foto: string | null;
+  status: "pending" | "proses" | "selesai";
   created_at: string;
 }
 
 export default function HomeServiceTable() {
   const [data, setData] = useState<HomeService[]>([]);
   const [loading, setLoading] = useState(true);
+  const [processingId, setProcessingId] = useState<number | null>(null);
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch("/api/servicehome");
+      const result = await res.json();
+      setData(result);
+    } catch (error) {
+      console.error("Gagal mengambil data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchHomeServiceTable = async () => {
-      try {
-        const res = await fetch("/api/servicehome");
-        const result = await res.json();
-        setData(result);
-      } catch (error) {
-        console.error("Gagal mengambil data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchHomeServiceTable();
+    fetchData();
   }, []);
+
+  const handleUpdateStatus = async (
+    id: number,
+    nextStatus: "pending" | "proses" | "selesai"
+  ) => {
+    try {
+      setProcessingId(id);
+
+      await fetch("/api/servicehome", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status: nextStatus }),
+      });
+
+      await fetchData();
+    } catch (error) {
+      console.error("Gagal update status:", error);
+    } finally {
+      setProcessingId(null);
+    }
+  };
 
   return (
     <div className="flex">
@@ -49,14 +72,14 @@ export default function HomeServiceTable() {
               <tr>
                 <th className="px-4 py-3">No</th>
                 <th className="px-4 py-3">Tanggal Dibuat</th>
-                <th className="px-4 py-3">Username</th>
+                <th className="px-4 py-3">Nama</th>
                 <th className="px-4 py-3">Perangkat</th>
                 <th className="px-4 py-3">Alamat Lengkap</th>
-                <th className="px-4 py-3">Nomor Cadangan</th>
-                <th className="px-4 py-3">Permintaan Layanan</th>
-                <th className="px-4 py-3">Pesan</th>
+                <th className="px-4 py-3">Nomor HP</th>
+                <th className="px-4 py-3">Tanggal Layanan</th>
+                <th className="px-4 py-3">Kendala</th>
                 <th className="px-4 py-3">Foto</th>
-                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3 text-center">Status</th>
               </tr>
             </thead>
 
@@ -74,51 +97,72 @@ export default function HomeServiceTable() {
                   </td>
                 </tr>
               ) : (
-                data.map((home_service, index) => (
-                  <tr key={home_service.id} className="hover:bg-gray-50">
+                data.map((item, index) => (
+                  <tr key={item.id} className="hover:bg-gray-50">
+                    <td className="px-4 py-3">{index + 1}</td>
+
                     <td className="px-4 py-3">
-                      <h1>{index + 1}</h1>
+                      {new Date(item.created_at).toLocaleDateString("id-ID")}
                     </td>
+
+                    <td className="px-4 py-3">{item.nama}</td>
+                    <td className="px-4 py-3">{item.perangkat}</td>
+                    <td className="px-4 py-3">{item.alamat_lengkap}</td>
+                    <td className="px-4 py-3">{item.nomor_hp}</td>
+
                     <td className="px-4 py-3">
-                      <h1>
-                        {new Date(home_service.created_at).toLocaleDateString("id-ID")}
-                      </h1>
+                      {new Date(item.tanggal).toLocaleDateString("id-ID")}
                     </td>
+
+                    <td className="px-4 py-3">{item.kendala}</td>
+
                     <td className="px-4 py-3">
-                      <h1>{home_service.nama}</h1>
-                    </td>
-                    <td className="px-4 py-3">
-                      <h1>{home_service.perangkat}</h1>
-                    </td>
-                    <td className="px-4 py-3">
-                      <h1>{home_service.alamat_lengkap}</h1>
-                    </td>
-                    <td className="px-4 py-3">
-                      <h1>{home_service.nomor_hp}</h1>
-                    </td>
-                    <td className="px-4 py-3">
-                    <h1>
-                        {new Date(home_service.tanggal).toLocaleDateString("id-ID")}
-                    </h1>
-                    </td>
-                    <td className="px-4 py-3">
-                      <h1>{home_service.kendala}</h1>
-                    </td>
-                    <td className="px-4 py-3">
-                      {home_service.foto ? (
+                      {item.foto ? (
                         <img
-                          src={`/uploads/${home_service.foto}`}
+                          src={`/uploads/${item.foto}`}
                           alt="Foto"
-                          className="w-10 h-10 rounded-full object-cover"
+                          className="w-10 h-10 rounded object-cover"
                         />
                       ) : (
-                        <span>-</span>
+                        "-"
                       )}
                     </td>
-                    <td className="px-4 py-3">
-                      <h1 className="border text-center rounded-md border-orange-500 bg-orange-500 text-white">
-                        Diproses
-                      </h1>
+
+                    {/* STATUS + ACTION */}
+                    <td className="px-4 py-3 text-center">
+                      {item.status === "pending" && (
+                        <button
+                          onClick={() =>
+                            handleUpdateStatus(item.id, "proses")
+                          }
+                          disabled={processingId === item.id}
+                          className="px-3 py-1 bg-blue-600 text-white rounded text-sm disabled:bg-gray-400"
+                        >
+                          {processingId === item.id
+                            ? "Memproses..."
+                            : "Proses"}
+                        </button>
+                      )}
+
+                      {item.status === "proses" && (
+                        <button
+                          onClick={() =>
+                            handleUpdateStatus(item.id, "selesai")
+                          }
+                          disabled={processingId === item.id}
+                          className="px-3 py-1 bg-orange-500 text-white rounded text-sm disabled:bg-gray-400"
+                        >
+                          {processingId === item.id
+                            ? "Menyelesaikan..."
+                            : "Selesaikan"}
+                        </button>
+                      )}
+
+                      {item.status === "selesai" && (
+                        <span className="px-3 py-1 bg-green-600 text-white rounded text-sm">
+                          Selesai
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))

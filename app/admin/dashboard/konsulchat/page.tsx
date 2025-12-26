@@ -2,114 +2,142 @@
 import { useEffect, useState } from "react";
 import AdminSidebar from "@/app/components/AdminSidebar";
 
-interface KonsulTable {
-    id: number;
-    nama: string;
-    nomorHP: string;
-    perangkat: string;
-    pesan: string;
-    foto: string | null;
-    created_at: string;
+interface Konsultasi {
+  id: number;
+  nama: string;
+  nomorHP: string;
+  perangkat: string;
+  pesan: string;
+  foto: string | null;
+  status: "pending" | "proses" | "selesai";
+  created_at: string;
 }
 
 export default function KonsulTable() {
-    const [KonsulTable, setKonsulTable] = useState<KonsulTable[]>([]);
-        const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Konsultasi[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [processingId, setProcessingId] = useState<number | null>(null);
 
-            useEffect(() => {
-        const fetchKonsulTable = async () => {
-            try {
-                const res = await fetch("/api/konsulchat");
-                const data = await res.json();
-                setKonsulTable(data);
-            } catch (error) {
-                console.error("Gagal mengambil data pengguna:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
+  const fetchData = async () => {
+    try {
+      const res = await fetch("/api/konsulchat");
+      const result = await res.json();
+      setData(result);
+    } catch (error) {
+      console.error("Gagal mengambil data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-        fetchKonsulTable();
-    }, []);
-    return (
-        <div className="flex">
-            {/* Sidebar */}
-            <AdminSidebar />
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-            {/* Konten */}
-            <div className="flex-1 p-6">
-                <h1 className="text-2xl font-semibold mb-4 font-poppins text-darkb">Data Konsultasi</h1>
+  const updateStatus = async (
+    id: number,
+    status: "proses" | "selesai"
+  ) => {
+    try {
+      setProcessingId(id);
 
-                <div className="overflow-x-auto rounded-xl shadow bg-white">
-                    <table className="min-w-full text-sm text-left">
-                        <thead className="bg-gray-100 text-gray-700">
-                            <tr>
-                                <th className="px-4 py-3">No</th>
-                                <th className="px-4 py-3">Tanggal Dibuat</th>
-                                <th className="px-4 py-3">Username</th>
-                                <th className="px-4 py-3">Perangkat</th>
-                                <th className="px-4 py-3">Pesan</th>
-                                <th className="px-4 py-3">Foto</th>
-                                <th className="px-4 py-3">No. Telp</th>
-                                <th className="px-4 py-3">Status</th>
-                            </tr>
-                        </thead>
+      await fetch("/api/konsulchat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status }),
+      });
 
-                        <tbody className="divide-y">
-                            {loading ? (
-                                <tr>
-                                    <td colSpan={6} className="px-4 py-6 text-center">
-                                        Memuat data...
-                                    </td>
-                                </tr>
-                            ) : KonsulTable.length === 0 ? (
-                                <tr>
-                                    <td colSpan={6} className="px-4 py-6 text-center">
-                                        Data pengguna tidak tersedia
-                                    </td>
-                                </tr>
-                            ) : (
-                                KonsulTable.map((konsultasi, index) => (
-                                    <tr key={konsultasi.id} className="hover:bg-gray-50">
-                                        <td className="px-4 py-3">
-                                            <h1>{index + 1}</h1>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <h1>
-                                                {new Date(konsultasi.created_at).toLocaleDateString("id-ID")}
-                                            </h1>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <h1>{konsultasi.nama}</h1>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <h1>{konsultasi.perangkat}</h1>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <h1>{konsultasi.pesan}</h1>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <img
-                                                src={`/uploads/${konsultasi.foto}`}
-                                                alt="Foto Konsul"
-                                                className="w-10 h-10 rounded-full object-cover"
-                                            />
-                                        </td>
-                                        <td className="px-4 py-3">
-                                            <h1>{konsultasi.nomorHP}</h1>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                    <h1 className="border text-center rounded-md border-orange-500 bg-orange-500 text-white">Diproses</h1>
-                                </td>
+      await fetchData();
+    } catch (error) {
+      console.error("Gagal update status:", error);
+    } finally {
+      setProcessingId(null);
+    }
+  };
 
-                                    </tr>
-                                ))
-                            )}
+  return (
+    <div className="flex">
+      <AdminSidebar />
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+      <div className="flex-1 p-6">
+        <h1 className="text-2xl font-semibold mb-4">Data Konsultasi</h1>
+
+        <div className="overflow-x-auto bg-white rounded-xl shadow">
+          <table className="min-w-full text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-4 py-3">No</th>
+                <th className="px-4 py-3">Tanggal</th>
+                <th className="px-4 py-3">Nama</th>
+                <th className="px-4 py-3">Perangkat</th>
+                <th className="px-4 py-3">Pesan</th>
+                <th className="px-4 py-3">Foto</th>
+                <th className="px-4 py-3">No HP</th>
+                <th className="px-4 py-3 text-center">Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {loading ? (
+                <tr>
+                  <td colSpan={8} className="text-center py-6">
+                    Memuat data...
+                  </td>
+                </tr>
+              ) : (
+                data.map((item, i) => (
+                  <tr key={item.id} className="border-t">
+                    <td className="px-4 py-3">{i + 1}</td>
+                    <td className="px-4 py-3">
+                      {new Date(item.created_at).toLocaleDateString("id-ID")}
+                    </td>
+                    <td className="px-4 py-3">{item.nama}</td>
+                    <td className="px-4 py-3">{item.perangkat}</td>
+                    <td className="px-4 py-3">{item.pesan}</td>
+                    <td className="px-4 py-3">
+                      {item.foto ? (
+                        <img
+                          src={`/uploads/${item.foto}`}
+                          className="w-10 h-10 rounded object-cover"
+                        />
+                      ) : (
+                        "-"
+                      )}
+                    </td>
+                    <td className="px-4 py-3">{item.nomorHP}</td>
+
+                    <td className="px-4 py-3 text-center">
+                      {item.status === "pending" && (
+                        <button
+                          onClick={() => updateStatus(item.id, "proses")}
+                          className="px-3 py-1 bg-blue-600 text-white rounded text-sm"
+                        >
+                          Proses
+                        </button>
+                      )}
+
+                      {item.status === "proses" && (
+                        <button
+                          onClick={() => updateStatus(item.id, "selesai")}
+                          className="px-3 py-1 bg-orange-500 text-white rounded text-sm"
+                        >
+                          Selesaikan
+                        </button>
+                      )}
+
+                      {item.status === "selesai" && (
+                        <span className="px-3 py-1 bg-green-600 text-white rounded text-sm">
+                          Selesai
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
