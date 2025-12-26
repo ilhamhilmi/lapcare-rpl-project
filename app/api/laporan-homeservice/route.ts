@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import path from "path";
 import fs from "fs/promises";
 
-/*  GET → data untuk form*/
+// GET → ambil data teknisi untuk form
 export async function GET() {
   try {
     const cookieStore = await cookies();
@@ -14,51 +14,23 @@ export async function GET() {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    // ambil username teknisi login
-    const [teknisiRows]: any = await db.query(
+    const [rows]: any = await db.query(
       "SELECT username FROM user WHERE id = ? AND role = 'teknisi'",
       [teknisiId]
     );
 
-    if (!teknisiRows || teknisiRows.length === 0) {
-      return NextResponse.json(
-        { message: "Akun bukan teknisi" },
-        { status: 403 }
-      );
+    if (!rows || rows.length === 0) {
+      return NextResponse.json({ message: "Akun bukan teknisi" }, { status: 403 });
     }
 
-    // ambil home service terbaru
-    const [homeServiceRows]: any = await db.query(
-      `
-      SELECT id, nama
-      FROM home_service
-      ORDER BY id DESC
-      LIMIT 1
-      `
-    );
-
-    if (!homeServiceRows || homeServiceRows.length === 0) {
-      return NextResponse.json(
-        { message: "Home service tidak ditemukan" },
-        { status: 404 }
-      );
-    }
-
-    return NextResponse.json({
-      home_service_id: homeServiceRows[0].id,
-      username_customer: homeServiceRows[0].nama,
-      username_teknisi: teknisiRows[0].username,
-    });
+    return NextResponse.json({ username_teknisi: rows[0].username });
   } catch (error) {
     console.error(error);
-    return NextResponse.json(
-      { message: "Terjadi kesalahan server" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Terjadi kesalahan server" }, { status: 500 });
   }
 }
 
-/*  POST → simpan laporan */
+// POST → simpan laporan teknisi
 export async function POST(req: Request) {
   try {
     const cookieStore = await cookies();
@@ -74,37 +46,35 @@ export async function POST(req: Request) {
     );
 
     if (!teknisiRows || teknisiRows.length === 0) {
-      return NextResponse.json(
-        { message: "Akses ditolak" },
-        { status: 403 }
-      );
+      return NextResponse.json({ message: "Akses ditolak" }, { status: 403 });
     }
 
     const teknisiUsername = teknisiRows[0].username;
 
     const formData = await req.formData();
-    const homeServiceId = formData.get("home_service_id") as string;
+
+    const homeServiceIdRaw = formData.get("home_service_id");
+    const usernameCustomer = formData.get("username_customer") as string;
     const detailKerusakan = formData.get("detail_kerusakan") as string;
     const ongkosPerbaikan = formData.get("ongkos_perbaikan") as string;
     const biayaSparepart = formData.get("biaya_sparepart") as string;
 
-    if (!homeServiceId || !detailKerusakan || !ongkosPerbaikan) {
-      return NextResponse.json(
-        { message: "Data wajib belum lengkap" },
-        { status: 400 }
-      );
+    if (!homeServiceIdRaw || !usernameCustomer || !detailKerusakan || !ongkosPerbaikan) {
+      return NextResponse.json({ message: "Data wajib belum lengkap" }, { status: 400 });
     }
 
-    const [homeServiceRows]: any = await db.query(
-      "SELECT nama FROM home_service WHERE id = ?",
+    const homeServiceId = Number(homeServiceIdRaw);
+    if (isNaN(homeServiceId)) {
+      return NextResponse.json({ message: "home_service_id tidak valid" }, { status: 400 });
+    }
+
+    const [homeServiceCheck]: any = await db.query(
+      "SELECT id FROM home_service WHERE id = ?",
       [homeServiceId]
     );
 
-    if (!homeServiceRows || homeServiceRows.length === 0) {
-      return NextResponse.json(
-        { message: "Home service tidak ditemukan" },
-        { status: 404 }
-      );
+    if (!homeServiceCheck || homeServiceCheck.length === 0) {
+      return NextResponse.json({ message: "home_service_id tidak ditemukan" }, { status: 400 });
     }
 
     const uploadDir = path.join(process.cwd(), "public/uploads");
@@ -130,39 +100,15 @@ export async function POST(req: Request) {
     }
 
     await db.execute(
-      `
-      INSERT INTO laporan_teknisi (
-        home_service_id,
-        username_customer,
-        username_teknisi,
-        detail_kerusakan,
-        ongkos_perbaikan,
-        biaya_sparepart,
-        bukti_pembelian_sparepart,
-        bukti_pembayaran_customer
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `,
-      [
-        homeServiceId,
-        homeServiceRows[0].nama,
-        teknisiUsername,
-        detailKerusakan,
-        ongkosPerbaikan,
-        biayaSparepart || 0,
-        buktiSparepartPath,
-        buktiPembayaranPath,
-      ]
+      `INSERT INTO laporan_teknisi 
+      (home_service_id, username_customer, username_teknisi, detail_kerusakan, ongkos_perbaikan, biaya_sparepart, bukti_pembelian_sparepart, bukti_pembayaran_customer)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [homeServiceId, usernameCustomer, teknisiUsername, detailKerusakan, ongkosPerbaikan, biayaSparepart || 0, buktiSparepartPath, buktiPembayaranPath]
     );
 
-    return NextResponse.json(
-      { message: "Laporan teknisi berhasil disimpan" },
-      { status: 201 }
-    );
+    return NextResponse.json({ message: "Laporan teknisi berhasil disimpan" }, { status: 201 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json(
-      { message: "Terjadi kesalahan server" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Terjadi kesalahan server" }, { status: 500 });
   }
 }

@@ -5,12 +5,12 @@ export async function POST() {
 
   // HAPUS SESSION ADMIN SAJA
   res.cookies.set("admin_id", "", {
-    path: "/admin",
+    path: "/",
     maxAge: 0,
   });
 
   res.cookies.set("admin_role", "", {
-    path: "/admin",
+    path: "/",
     maxAge: 0,
   });
 

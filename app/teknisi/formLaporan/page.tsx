@@ -24,26 +24,53 @@ export default function LaporanTeknisi() {
   const [bukti_pembayaran_customer, setBuktiPembayaranCustomer] =
     useState<File | null>(null);
 
-  useEffect(() => {
-    fetch("/api/laporan-homeservice", { credentials: "include" })
-      .then(res => res.json())
-      .then(data => {
-        setHomeServiceId(String(data.home_service_id ?? ""));
-        setUsernameCustomer(data.username_customer ?? "");
-        setUsernameTeknisi(data.username_teknisi ?? "");
-      })
-      .catch(() => toast.error("Gagal mengambil data"));
-  }, []);
+useEffect(() => {
+  const fetchTeknisi = async () => {
+    try {
+      const res = await fetch("/api/laporan-homeservice", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (!res.ok) {
+        throw new Error("Gagal mengambil data teknisi");
+      }
+
+      const data = await res.json();
+      setUsernameTeknisi(data.username_teknisi);
+    } catch (err) {
+      console.error(err);
+      toast.error("Gagal mengambil data teknisi");
+    }
+  };
+
+  fetchTeknisi();
+}, []);
+
+
+
+  // useEffect(() => {
+  //   fetch("/api/laporan-homeservice", { credentials: "include" })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       // setHomeServiceId(String(data.home_service_id ?? ""));
+  //       // setUsernameCustomer(data.username_customer ?? "");
+  //       setUsernameTeknisi(data.username_teknisi ?? "");
+  //     })
+  //     .catch(() => toast.error("Gagal mengambil data"));
+  // }, []);
 
   const handleSubmit = async () => {
-    if (!home_service_id || !detail_kerusakan || !ongkos_perbaikan) {
+    if (!home_service_id || !username_customer || !detail_kerusakan || !ongkos_perbaikan) {
       toast.error("Field wajib belum lengkap");
       return;
     }
 
     try {
       const formData = new FormData();
+      // coba 1 baris
       formData.append("home_service_id", home_service_id);
+      formData.append("username_customer", username_customer); //-
       formData.append("detail_kerusakan", detail_kerusakan);
       formData.append("ongkos_perbaikan", ongkos_perbaikan);
       formData.append("biaya_sparepart", biaya_sparepart);
@@ -97,18 +124,26 @@ export default function LaporanTeknisi() {
         <div className="flex justify-center">
           <input
             value={home_service_id}
-            readOnly
+            onChange={e => setHomeServiceId(e.target.value)}
+            placeholder="Home Dervice ID"
             className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
-            placeholder="ID Home Service"
+            // value={home_service_id}
+            // readOnly
+            // className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
+            // placeholder="ID Home Service"
           />
         </div>
 
         <div className="flex justify-center">
           <input
             value={username_customer}
-            readOnly
-            className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
+            onChange={e => setUsernameCustomer(e.target.value)}
             placeholder="Username Customer"
+            className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
+            // value={username_customer}
+            // readOnly
+            // className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
+            // placeholder="Username Customer"
           />
         </div>
 
@@ -120,7 +155,6 @@ export default function LaporanTeknisi() {
             placeholder="Username Teknisi"
           />
         </div>
-
         <div className="flex justify-center">
           <textarea
             value={detail_kerusakan}
