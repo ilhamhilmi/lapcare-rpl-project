@@ -71,6 +71,7 @@ export default function HomeServiceTable() {
             <thead className="bg-gray-100 text-gray-700">
               <tr>
                 <th className="px-4 py-3">No</th>
+                <th className="px-4 py-3">ID</th>
                 <th className="px-4 py-3">Tanggal Dibuat</th>
                 <th className="px-4 py-3">Nama</th>
                 <th className="px-4 py-3">Perangkat</th>
@@ -100,6 +101,9 @@ export default function HomeServiceTable() {
                 data.map((item, index) => (
                   <tr key={item.id} className="hover:bg-gray-50">
                     <td className="px-4 py-3">{index + 1}</td>
+                    <td className="px-4 py-3 font-semibold text-gray-700">
+                      {item.id}
+                    </td>
 
                     <td className="px-4 py-3">
                       {new Date(item.created_at).toLocaleDateString("id-ID")}
