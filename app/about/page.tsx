@@ -91,11 +91,11 @@ export default function AboutPage() {
                 <div className="container mx-auto">
                     <div className="flex items-center justify-center px-4">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                            <div className="flex flex-col items-center justify-center text-center" data-aos="fade-right">
+                            <div className="flex flex-col items-center justify-center text-center" data-aos="fade-up">
                                 <h1 className="text-darkb font-poppins font-semibold border-b-2 pb-1 px-3 border-darkb mb-3 text-2xl lg:text-3xl">Visi</h1>
                                 <p className="text-black max-w-sm lg:max-w-md font-poppins text-md lg:text-lg">Menjadi mitra terpercaya dalam konsultasi dan layanan perbaikan perangkat digital yang cepat, efisien, dan berkualitas tinggi, dengan mengutamakan kepuasan pengguna serta nilai kolaborasi dalam setiap proses pelayanan, kami akan melayani dengan sepenuh hati.</p>
                             </div>
-                            <div className="flex flex-col items-center justify-center text-center" data-aos="fade-left">
+                            <div className="flex flex-col items-center justify-center text-center" data-aos="fade-up">
                                 <h1 className="text-darkb font-poppins font-semibold border-b-2 pb-1 px-3 border-darkb mb-3 text-2xl lg:text-3xl">Misi</h1>
                                 <p className="text-black max-w-sm lg:max-w-md font-poppins text-md lg:text-lg">Memberikan solusi terbaik melalui layanan konsultasi dan perbaikan yang responsif, transparan, dan penuh kepedulian, serta berkomitmen menjaga kepercayaan pengguna melalui inovasi berkelanjutan dan kerja sama tim yang profesional.</p>
                             </div>
