@@ -2,15 +2,12 @@ import { NextResponse } from "next/server";
 import mysql from "mysql2/promise";
 
 
-export const db = mysql.createPool({
+const pool = mysql.createPool({
   host: "interchange.proxy.rlwy.net",
-  port: 36631,                  // Port harus terpisah seperti ini
+  port: 36631,
   user: "root",
   password: "pgkSuXlsZyfRewrdhtjnvFfcBkymqwAH",
-  database: "railway",          // Ini nama DB default di Railway
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+  database: "railway",
 });
 
 
@@ -30,7 +27,7 @@ export async function POST(req: Request) {
       VALUES (?, ?, ?)
     `;
 
-    const [result] = await db.execute(query, [
+    const [result] = await pool.execute(query, [
       name,
       job || null,
       message,
@@ -61,12 +58,12 @@ export async function POST(req: Request) {
 export async function GET() {
   try {
     const query = `
-      SELECT id, name, job, message, createdAt
+      SELECT id, name, job, message, created_at
       FROM reviews
       ORDER BY createdAt DESC
     `;
 
-    const [rows] = await db.execute(query);
+    const [rows] = await pool.execute(query);
 
     return NextResponse.json({
       success: true,
