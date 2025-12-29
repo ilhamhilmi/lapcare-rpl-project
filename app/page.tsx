@@ -28,15 +28,22 @@ export default function Home() {
     const fetchReviews = async () => {
       try {
         const res = await fetch("/api/review");
+
+        if (!res.ok) {
+          throw new Error("Response tidak OK");
+        }
+
         const json = await res.json();
-        setReviews(json.data);
+        setReviews(Array.isArray(json.data) ? json.data : []);
       } catch (error) {
         console.error("Gagal mengambil review", error);
+        setReviews([]); // ✅ BIAR TIDAK CRASH
       }
     };
 
     fetchReviews();
   }, []);
+
 
 
   useEffect(() => {
@@ -197,7 +204,7 @@ export default function Home() {
                 <div
                   key={`${review.id ?? index}-${index}`}
                   className="min-w-[330px] mr-6 border border-darkb rounded-xl flex items-center px-5 py-3 bg-slate-100 hover:scale-[1.05] hover:bg-white transition duration-200 hover:shadow-md cursor-pointer">
-                  <Image src={index % 2 === 0 ? userMale : userFemale} alt="userLogo" width={65} height={65} className="border border-secondary bg-primary rounded-full mr-5"/>
+                  <Image src={index % 2 === 0 ? userMale : userFemale} alt="userLogo" width={65} height={65} className="border border-secondary bg-primary rounded-full mr-5" />
                   <div>
                     <h1 className="text-darkb font-poppins font-semibold text-md">
                       {review.name}

@@ -1,8 +1,12 @@
 import mysql from "mysql2/promise";
 
 export const db = mysql.createPool({
-  host: "localhost",
+  host: "interchange.proxy.rlwy.net",
+  port: 36631,                  // Port harus terpisah seperti ini
   user: "root",
-  password: "",
-  database: "lapcare",
+  password: "pgkSuXlsZyfRewrdhtjnvFfcBkymqwAH",
+  database: "railway",          // Ini nama DB default di Railway
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
