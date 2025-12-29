@@ -199,6 +199,9 @@ export default function Home() {
             </h1>
           </div>
           <div className=" w-full">
+            <p className="text-red-600 text-center">
+              TOTAL REVIEWS: {reviews?.length}
+            </p>
             <div className="marquee-track py-5">
               {[...reviews, ...reviews].map((review, index) => (
                 <div
