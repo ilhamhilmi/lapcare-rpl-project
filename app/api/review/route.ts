@@ -60,7 +60,7 @@ export async function GET() {
     const query = `
       SELECT id, name, job, message, created_at
       FROM reviews
-      ORDER BY createdAt DESC
+      ORDER BY created_at DESC
     `;
 
     const [rows] = await pool.execute(query);
