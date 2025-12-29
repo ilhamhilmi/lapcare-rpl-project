@@ -12,15 +12,15 @@ export default function AdminDashboard() {
             <section className="min-h-screen bg-white px-4 flex">
                 <div className="container mx-auto flex items-center ">
                     <div className="grid grid-cols-3 gap-3">
-                        <div className="border border-secondary flex flex-col text-center p-5 rounded-md  bg-gradient-to-tr from-darkb to-primary space-y-2">
+                        <div className="border border-secondary flex flex-col text-center p-5 rounded-md  bg-gradient-to-b from-darkb to-primary space-y-2">
                             <h1 className="font-poppins text-white text-6xl">999</h1>
                             <h1 className="font-poppins text-white font-semibold">Total Pengguna Terdaftar</h1>
                         </div>
-                        <div className="border border-secondary flex flex-col text-center p-5 rounded-md  bg-gradient-to-tr from-darkb to-primary space-y-2">
+                        <div className="border border-secondary flex flex-col text-center p-5 rounded-md  bg-gradient-to-b from-darkb to-primary space-y-2">
                             <h1 className="font-poppins text-white text-6xl">999</h1>
                             <h1 className="font-poppins text-white font-semibold">Total Permintaan Konsultasi</h1>
                         </div>
-                        <div className="border border-secondary flex flex-col text-center p-5 rounded-md  bg-gradient-to-tr from-darkb to-primary space-y-2">
+                        <div className="border border-secondary flex flex-col text-center p-5 rounded-md  bg-gradient-to-b from-darkb to-primary space-y-2">
                             <h1 className="font-poppins text-white text-6xl">999</h1>
                             <h1 className="font-poppins text-white font-semibold">Total Permintaan Home Service</h1>
                         </div>
