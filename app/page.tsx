@@ -198,10 +198,7 @@ export default function Home() {
               Kata Mereka Tentang LapCare
             </h1>
           </div>
-          <div className=" w-full">
-            <p className="text-red-600 text-center">
-              TOTAL REVIEWS: {reviews?.length}
-            </p>
+          <div className=" w-full overflow-hidden">
             <div className="marquee-track py-5">
               {[...reviews, ...reviews].map((review, index) => (
                 <div
