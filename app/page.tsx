@@ -28,10 +28,16 @@ export default function Home() {
     const fetchReviews = async () => {
       try {
         const res = await fetch("/api/review");
+
+        if (!res.ok) {
+          throw new Error("Response tidak OK");
+        }
+
         const json = await res.json();
-        setReviews(json.data);
+        setReviews(Array.isArray(json.data) ? json.data : []);
       } catch (error) {
         console.error("Gagal mengambil review", error);
+        setReviews([]); // ✅ BIAR TIDAK CRASH
       }
     };
 
