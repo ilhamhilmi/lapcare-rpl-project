@@ -5,7 +5,7 @@ export async function GET() {
     try {
         // TOTAL DATA
         const [user] = await db.query<any[]>(`
-  SELECT COUNT(*) AS total FROM user
+  SELECT COUNT(*) AS total FROM user WHERE role = 'user'
 `);
 
         // total konsultasi
