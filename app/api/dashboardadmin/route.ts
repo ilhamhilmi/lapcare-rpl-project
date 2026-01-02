@@ -35,6 +35,14 @@ export async function GET() {
     COALESCE(SUM(status = 'selesai'), 0) AS selesai
     FROM home_service
 `);
+        // status teknisuyyy
+        const [laporanTeknisiStatus] = await db.query<any[]>(`
+    SELECT
+    COALESCE(SUM(status = 'pending'), 0) AS pending,
+    COALESCE(SUM(status = 'proses'), 0) AS proses,
+    COALESCE(SUM(status = 'selesai'), 0) AS selesai
+    FROM laporan_teknisi
+`);
 
         return NextResponse.json({
             totalUser: Number(user[0].total),
@@ -52,6 +60,12 @@ export async function GET() {
                 proses: Number(homeServiceStatus[0].proses),
                 selesai: Number(homeServiceStatus[0].selesai),
             },
+
+            teknisi: {
+                pending: Number(laporanTeknisiStatus[0].pending),
+                proses: Number(laporanTeknisiStatus[0].proses),
+                selesai: Number(laporanTeknisiStatus[0].selesai),
+            }
         });
 
     } catch (err) {

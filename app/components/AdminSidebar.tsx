@@ -19,7 +19,7 @@ export default function AdminSidebar() {
     window.location.href = "/admin/login";
   };
     return (
-        <div className="w-60 min-h-screen bg-darkb text-white p-4 text-center">
+        <div className="w-60 min-h-screen bg-darkb text-white py-4 px-2 text-center">
             <h1 className="font-poppins text-2xl text-white mb-8 uppercase font-semibold">Admin</h1>
             <div className="text-center flex flex-col items-center justify-center ">
                 <div className="">
