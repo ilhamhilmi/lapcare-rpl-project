@@ -7,28 +7,60 @@ interface Ulasan {
     name: string;
     job: string;
     message: string;
-    createdAt: string;
+    created_at: string;
 }
 
+export const runtime = "nodejs";
+
+
 export default function Ulasan() {
-    const [Ulasan, setUlasan] = useState<Ulasan[]>([]);
+    const [ulasan, setUlasan] = useState<Ulasan[]>([]);
         const [loading, setLoading] = useState(true);
 
-            useEffect(() => {
-        const fetchUlasan = async () => {
-            try {
-                const res = await fetch("/api/ulasan");
-                const data = await res.json();
-                setUlasan(data);
-            } catch (error) {
-                console.error("Gagal mengambil data pengguna:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        useEffect(() => {
+  const fetchUlasan = async () => {
+    try {
+      const res = await fetch("/api/ulasan");
+      const data = await res.json();
 
-        fetchUlasan();
-    }, []);
+      // KUNCI
+      if (Array.isArray(data)) {
+        setUlasan(data);
+      } else if (Array.isArray(data.ulasan)) {
+        setUlasan(data.ulasan);
+      } else if (Array.isArray(data.data)) {
+        setUlasan(data.data);
+      } else {
+        setUlasan([]);
+        console.error("Format API tidak sesuai:", data);
+      }
+    } catch (error) {
+      console.error("Gagal mengambil data ulasan:", error);
+      setUlasan([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchUlasan();
+}, []);
+
+
+    //         useEffect(() => {
+    //     const fetchUlasan = async () => {
+    //         try {
+    //             const res = await fetch("/api/ulasan");
+    //             const data = await res.json();
+    //             setUlasan(data);
+    //         } catch (error) {
+    //             console.error("Gagal mengambil data pengguna:", error);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     };
+
+    //     fetchUlasan();
+    // }, []);
     return (
         <div className="flex">
             {/* Sidebar */}
@@ -58,21 +90,21 @@ export default function Ulasan() {
                                         Memuat data...
                                     </td>
                                 </tr>
-                            ) : Ulasan.length === 0 ? (
+                            ) : ulasan.length === 0 ? (
                                 <tr>
                                     <td colSpan={6} className="px-4 py-6 text-center">
                                         Data pengguna tidak tersedia
                                     </td>
                                 </tr>
                             ) : (
-                                Ulasan.map((reviews, index) => (
+                                ulasan.map((reviews, index) => (
                                     <tr key={reviews.id} className="hover:bg-gray-50">
                                         <td className="px-4 py-3">
                                             <h1>{index + 1}</h1>
                                         </td>
                                         <td className="px-4 py-3">
                                             <h1>
-                                                {new Date(reviews.createdAt).toLocaleDateString("id-ID")}
+                                                {new Date(reviews.created_at).toLocaleDateString("id-ID")}
                                             </h1>
                                         </td>
                                         <td className="px-4 py-3">

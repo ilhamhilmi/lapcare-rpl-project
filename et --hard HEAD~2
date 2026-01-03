@@ -1,0 +1,72 @@
+[33m885b5d4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m  component navbar & page user profile
+[33m7c9c53c[m ulasan(dashboardAdmin), api(laporan-homeservice), api(login), homeService/page.tsx, konsultasi/page.tsx, middleware
+[33mc1bb80c[m bismillah slider done
+[33m71dff10[m created_at api review
+[33m7f378b2[m balikin lg
+[33m055c1d8[m aos about, balikin useEffect home ke semula
+[33m3c83cf2[m lagi
+[33m8a3dce4[m the power of maghrib
+[33mc8e0289[m bisa plis
+[33m91bf57c[m bisa kek plis
+[33mf795459[m change
+[33md23ee9d[m ubah dikit
+[33m76b6398[m kolom id di home service
+[33mca4cf89[m[33m ([m[1;31morigin/final-lagi[m[33m, [m[1;32mfinal-lagi[m[33m)[m  tambahan kolom ID di table home-service di dashboard admin
+[33me4f23aa[m merge main, final-lagi
+[33m42a5d5d[m tombol kirim home service
+[33m9796b56[m Status dari home service,kosultasi,dan laporan admin, formLaporan itu hanya nama teknisi yang terisi otomatis sisanya diisi manual oleh teknisi tapi untuk id home service itu harus bener-bener sesuai dengan id yang ada di home service, id home servie ketika si customer mengajukan home-service yang berada di table home-service
+[33m7d4454a[m login teknisi,logout teknisi, formLaporan teknisi harus login dulu, input data laporan ke databse, tampilin id-home-service,username-customer,username-teknisi
+[33mfc5b233[m fixing
+[33mbfa736c[m Form laporan teknisi, login teknisi, page laporan teknisi di dashboard admin
+[33mc8dfcbf[m fix dikit
+[33m4475401[m fix ulasan lagi
+[33m60e4fc1[m remove container ulasan
+[33m413fb8f[m Merge progress 20/12/2025
+[33m7ccc06e[m[33m ([m[1;31morigin/final-2[m[33m, [m[1;32mfinal-2[m[33m)[m Perbaikan logout agar ketika logout admin tidak logout user juga dan sebaliknya, ketika belum login tidak bisa masuk ke dashboard dengan menggunakan url saja
+[33m23da485[m masang icon web
+[33md99f5c4[m Infinity Slider Ulasan, modif fe about, ganti gambar page layanan kami, ganti logo show/hide pass userProf & editProf, tambahin show/hide pass ke sign up & login
+[33mcc103c8[m panduan harus login, toast review
+[33ma08861b[m fix fe admin dikit
+[33m4d9652f[m final-2
+[33m042f553[m[33m ([m[1;32mfinal[m[33m)[m login admin,logout,nampilin data konsul,pengguna,home_service,ulasan di dashboard admin
+[33mffdc080[m p
+[33m89227e1[m  login admin,logout,nampilin data konsul,pengguna,home_service,ulasan di dashboard admin
+[33m86d15ba[m[33m ([m[1;31morigin/final[m[33m)[m merge final <- finish-frontend
+[33m10e7d3f[m[33m ([m[1;31morigin/finish-frontend[m[33m, [m[1;32mfinish-frontend[m[33m)[m yang tadi
+[33mb5d789b[m Dashboard admin fix
+[33m1fc6f64[m GUIDE DONE
+[33m14fea69[m show hide pass
+[33mfa193dc[m Edit Profile Merge Frontend
+[33me293f95[m Merge
+[33m5edafbc[m guide progress
+[33m5d070dc[m[33m ([m[1;31morigin/frontend-nyoba-backend[m[33m, [m[1;32mfrontend-nyoba-backend[m[33m)[m Edit Profile
+[33m51d0074[m page riwayat user, signup harus diisi
+[33m0d321eb[m Frontend dashboard admin
+[33m006f2e3[m newest
+[33m5484e68[m Show & Hidden Signup/Login Mobile ver, Form konsul harus isi semua field + Toast notif
+[33m8bf64e6[m login/signup ilang kalo udah login, profile ilang kalo blm login
+[33mae42859[m Alert Design
+[33md468fe1[m User Profile Done
+[33mf6ab49f[m[33m ([m[1;31morigin/full-frontend[m[33m)[m 12/12/25
+[33m36b0639[m merging full-frontend and frontend-lagi
+[33m34027ee[m merge w/full-project
+[33m87c382f[m[33m ([m[1;31morigin/frontend-lagi[m[33m)[m Menambahkan panduan hardware komputer
+[33m5779b49[m[33m ([m[1;31morigin/full-project[m[33m, [m[1;32mfull-project[m[33m)[m tambahan fungsi harus login pada userProfile
+[33mc2dae4e[m Tombol Konsul di home
+[33m13ea174[m gokil
+[33mcc3a56b[m ngober
+[33mf8679a3[m Page konsul, layanan, user profile, edit profile, logout button
+[33mfe9b7ec[m Revisi ulasan & Double func panduan
+[33mb0bc66d[m Login & Sign up work
+[33m917ba9b[m merged backend
+[33m47fba69[m[33m ([m[1;31morigin/backend[m[33m, [m[1;32mbackend[m[33m)[m halo
+[33mab863fe[m file backend
+[33mc8bb257[m[33m ([m[1;32mmaster[m[33m)[m first commit
+[33ma189eed[m[33m ([m[1;31morigin/frontend[m[33m, [m[1;32mfrontend[m[33m, [m[1;32mfinish[m[33m)[m Penambahan page panduan software & hardware
+[33mbf52470[m Page layanan kami, mulai kerjain page panduan, form ulasan user
+[33md0e8d6b[m Page layanan, fix css default
+[33m498952f[m Updated
+[33m3b82105[m Penambahan AOS pada About Page
+[33mea211a5[m Mulai membuat About Page
+[33m641cf9c[m first-commit
+[33m6f0b973[m Initial commit from Create Next App

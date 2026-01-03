@@ -22,20 +22,21 @@ export default function HomeService() {
   const [file, setFile] = useState<File | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
 
-  useEffect(() => {
-    fetch("/api/userProfile")
-      .then((res) => res.json())
-      .then((data) => {
-        setUserId(String(data.id));
-        setNama(data.username);
-        setNomor_hp(data.no_tlp);
-        setLoadingUser(false);
-      })
-      .catch(() => {
-        toast.error("Gagal mengambil data user");
-        setLoadingUser(false);
-      });
-  }, []);
+useEffect(() => {
+  fetch("/api/userProfile", { credentials: "include" })
+    .then(res => res.json())
+    .then(data => {
+      setUserId(String(data.id));
+      setNama(data.username);
+      setNomor_hp(data.no_tlp);
+      setLoadingUser(false);
+    })
+    .catch(() => {
+      toast.error("Gagal mengambil data user");
+      setLoadingUser(false);
+    });
+}, []);
+
 
   const handleSubmit = async () => {
     if (
@@ -59,10 +60,12 @@ export default function HomeService() {
       formData.append("kendala", kendala);
       formData.append("foto", file);
 
-      const res = await fetch("/api/homeService", {
+     const res = await fetch("/api/homeService", {
         method: "POST",
         body: formData,
+        credentials: "include",  
       });
+
 
       const data = await res.json();
 

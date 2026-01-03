@@ -1,10 +1,12 @@
 import {NextResponse} from "next/server";
 import {db} from "@/lib/db";
 
+export const runtime = "nodejs";
 export async function GET() {
     try {
-        const [rows] = await db.execute(
-            "SELECT id,name,job,message,createdAt FROM reviews"
+        // const [rows] = await db.execute 
+        const [rows]: any = await db.query(
+            "SELECT id,name,job,message,created_at FROM reviews"
         );
 
         return NextResponse.json(rows);

@@ -149,7 +149,7 @@ useEffect(() => {
 
         <div className="flex justify-center">
           <input
-            value={username_teknisi}
+            value={username_teknisi || ""}
             readOnly
             className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
             placeholder="Username Teknisi"

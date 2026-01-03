@@ -36,26 +36,50 @@ export async function POST(req: Request) {
   }
 
   // RESPONSE LOGIN
-  const response = NextResponse.json({
-    success: true,
-    message: "Login user berhasil",
-  });
+const response = NextResponse.json({
+  success: true,
+  message: "Login user berhasil",
+});
 
-  // COOKIE USER
-  response.cookies.set("user_id", String(user.id), {
-    httpOnly: false,
-    path: "/",
-    sameSite: "lax",
-    maxAge: 60 * 60 * 24, // 1 hari
-  });
+// COOKIE USER
+response.cookies.set("user_id", String(user.id), {
+  httpOnly: true,                         // wajib true untuk keamanan
+  path: "/",                               // root agar bisa diakses semua halaman
+  secure: process.env.NODE_ENV === "production", // wajib true di HTTPS production
+  sameSite: "lax",
+  maxAge: 60 * 60 * 24, // 1 hari
+});
 
-  // ROLE USER TERPISAH
-  response.cookies.set("user_role", "user", {
-    httpOnly: false,
-    path: "/",
-    sameSite: "lax",
-    maxAge: 60 * 60 * 24,
-  });
+// ROLE USER TERPISAH
+response.cookies.set("user_role", "user", {
+  httpOnly: true,
+  path: "/",
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax",
+  maxAge: 60 * 60 * 24,
+});
+
+  // // RESPONSE LOGIN
+  // const response = NextResponse.json({
+  //   success: true,
+  //   message: "Login user berhasil",
+  // });
+
+  // // COOKIE USER
+  // response.cookies.set("user_id", String(user.id), {
+  //   httpOnly: false,
+  //   path: "/",
+  //   sameSite: "lax",
+  //   maxAge: 60 * 60 * 24, // 1 hari
+  // });
+
+  // // ROLE USER TERPISAH
+  // response.cookies.set("user_role", "user", {
+  //   httpOnly: false,
+  //   path: "/",
+  //   sameSite: "lax",
+  //   maxAge: 60 * 60 * 24,
+  // });
 
   return response;
 }

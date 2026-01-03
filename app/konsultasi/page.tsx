@@ -24,7 +24,7 @@ export default function Konsultasi() {
     const [loadingUser, setLoadingUser] = useState(true);
 
      useEffect(() => {
-        fetch("/api/userProfile")
+        fetch("/api/userProfile", { credentials: "include" })
           .then((res) => res.json())
           .then((data) => {
             setUserId(String(data.id));
@@ -60,10 +60,12 @@ export default function Konsultasi() {
             formData.append("pesan", pesan);
             formData.append("foto", file);
 
-            const res = await fetch("/api/konsultasi", {
+           const res = await fetch("/api/konsultasi", {
                 method: "POST",
                 body: formData,
+                credentials: "include", // new
             });
+
 
             const data = await res.json();
 

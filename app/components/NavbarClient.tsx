@@ -18,15 +18,37 @@ export default function NavbarClient() {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
-    const cookies = document.cookie;
+  const checkLogin = async () => {
+    try {
+      const res = await fetch("/api/me", {
+        credentials: "include",
+      });
 
-    // cek apakah cookie "user_id" ada
-    if (cookies.includes("user_id=")) {
-      setLoggedIn(true);
-    } else {
+      if (res.ok) {
+        const data = await res.json();
+        setLoggedIn(!!data.user);
+      } else {
+        setLoggedIn(false);
+      }
+    } catch {
       setLoggedIn(false);
     }
-  }, [pathname]);
+  };
+
+  checkLogin();
+}, [pathname]);
+
+
+  // useEffect(() => {
+  //   const cookies = document.cookie;
+
+  //   // cek apakah cookie "user_id" ada
+  //   if (cookies.includes("user_id=")) {
+  //     setLoggedIn(true);
+  //   } else {
+  //     setLoggedIn(false);
+  //   }
+  // }, [pathname]);
 
   const handleLogout = async () => {
     await fetch("/api/logout", {
