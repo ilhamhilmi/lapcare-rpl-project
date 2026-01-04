@@ -1,12 +1,21 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import mysql from "mysql2/promise";
 
 export const runtime = "nodejs";
 
+const pool = mysql.createPool({
+  host: "interchange.proxy.rlwy.net",
+  port: 36631,
+  user: "root",
+  password: "pgkSuXlsZyfRewrdhtjnvFfcBkymqwAH",
+  database: "railway",
+  waitForConnections: true,
+  connectionLimit: 10,
+});
+
 export async function GET() {
   try {
-    const [rows]: any = await db.query(
-      `
+    const query = `
       SELECT 
         id,
         name,
@@ -15,15 +24,16 @@ export async function GET() {
         created_at
       FROM reviews
       ORDER BY created_at DESC
-      `
-    );
+    `;
+
+    const [rows] = await pool.execute(query);
 
     return NextResponse.json({
       success: true,
       data: Array.isArray(rows) ? rows : [],
     });
-  } catch (error: any) {
-    console.error("REVIEWS ADMIN ERROR:", error?.message || error);
+  } catch (error) {
+    console.error("REVIEWS ADMIN ERROR:", error);
 
     return NextResponse.json(
       {
@@ -35,6 +45,7 @@ export async function GET() {
     );
   }
 }
+
 
 
 

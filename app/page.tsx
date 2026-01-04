@@ -37,7 +37,7 @@ export default function Home() {
         setReviews(Array.isArray(json.data) ? json.data : []);
       } catch (error) {
         console.error("Gagal mengambil review", error);
-        setReviews([]); // ✅ BIAR TIDAK CRASH
+        setReviews([]); // BIAR TIDAK CRASH
       }
     };
 
