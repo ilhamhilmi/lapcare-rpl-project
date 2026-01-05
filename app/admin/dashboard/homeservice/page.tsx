@@ -123,7 +123,7 @@ export default function HomeServiceTable() {
                     <td className="px-4 py-3">
                       {item.foto ? (
                         <img
-                          src={`/uploads/${item.foto}`}
+                          src={item.foto}
                           alt="Foto"
                           className="w-10 h-10 rounded object-cover"
                         />
@@ -131,6 +131,7 @@ export default function HomeServiceTable() {
                         "-"
                       )}
                     </td>
+
 
                     {/* STATUS + ACTION */}
                     <td className="px-4 py-3 text-center">
