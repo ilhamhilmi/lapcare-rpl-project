@@ -43,7 +43,7 @@ export default function LayananPage() {
                         <div className="xl:w-1/2">
                             <h1 className="mb-5 className
                             font-poppins font-semibold text-2xl xl:text-3xl text-darkb">Layanan Konsultasi Chat Online Dengan Teknisi Kami</h1>
-                            <p className="mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab minus hic unde vel reiciendis suscipit iste, omnis id in velit perferendis repellendus autem a aliquid itaque illo quae, dignissimos alias quod corporis? Molestiae hic consequuntur cupiditate veniam. Vel quaerat eum aperiam enim, nostrum iste explicabo facere nam, quasi fuga cum.</p>
+                            <p className="mb-5">Beritahu kami kendala mu via Chat Online, tidak perlu keluar rumah dan bebas biaya! Kami akan memberikan solusi terbaik untuk kendala yang Anda alami dalam laptop maupun komputer Anda. Tim kami siap membantu menganalisis dan memberikan solusi terbaik atas berbagai permasalahan yang Anda alami pada laptop maupun komputer, mulai dari kendala perangkat lunak hingga gangguan sistem. Dengan layanan ini, Anda dapat berkonsultasi secara mudah, cepat, dan aman kapan saja, sehingga masalah perangkat Anda dapat ditangani secara efisien tanpa mengganggu aktivitas sehari-hari.</p>
                             <Link href="/konsultasi" className="border px-4 py-2 rounded-full font-poppins text-white text-md bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300">Konsultasi Sekarang</Link>
                         </div>
                     </div>
@@ -52,7 +52,8 @@ export default function LayananPage() {
                         <div className="xl:w-1/2">
                             <h1 className="mb-5 className
                             font-poppins font-semibold text-2xl xl:text-3xl text-darkb">Layanan Konsultasi Chat Online Dengan Teknisi Kami</h1>
-                            <p className="mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab minus hic unde vel reiciendis suscipit iste, omnis id in velit perferendis repellendus autem a aliquid itaque illo quae, dignissimos alias quod corporis? Molestiae hic consequuntur cupiditate veniam. Vel quaerat eum aperiam enim, nostrum iste explicabo facere nam, quasi fuga cum.</p>
+                            <p className="mb-5">Beritahu kami kendala mu via Chat Online, tidak perlu keluar rumah dan bebas biaya! Kami akan memberikan solusi terbaik untuk kendala yang Anda alami dalam laptop maupun komputer Anda. Tim kami siap membantu menganalisis dan memberikan solusi terbaik atas berbagai permasalahan yang Anda alami pada laptop maupun komputer, mulai dari kendala perangkat lunak hingga gangguan sistem. Dengan layanan ini, Anda dapat berkonsultasi secara mudah, cepat, dan aman kapan saja, sehingga masalah perangkat Anda dapat ditangani secara efisien tanpa mengganggu aktivitas sehari-hari.
+                            </p>
                             <Link href="/konsultasi" className="border px-4 py-2 rounded-full font-poppins text-white text-md bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300">Konsultasi Sekarang</Link>
                         </div>
                         <div>
@@ -67,7 +68,7 @@ export default function LayananPage() {
                         <div className="xl:w-1/2">
                             <h1 className="mb-5 className
                             font-poppins font-semibold text-2xl xl:text-3xl text-darkb">Teknisi Datang Ke Rumah Anda</h1>
-                            <p className="mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab minus hic unde vel reiciendis suscipit iste, omnis id in velit perferendis repellendus autem a aliquid itaque illo quae, dignissimos alias quod corporis? Molestiae hic consequuntur cupiditate veniam. Vel quaerat eum aperiam enim, nostrum iste explicabo facere nam, quasi fuga cum.</p>
+                            <p className="mb-5">Teknisi kami akan datang ke rumah atau tempat Anda untuk menangani berbagai permasalahan pada laptop maupun komputer secara langsung dan menyeluruh. Layanan ini dikenakan biaya terjangkau sesuai dengan jenis kendala dan tingkat penanganan yang dibutuhkan. Dengan Home Service, Anda tidak perlu repot membawa perangkat ke tempat servis. Semua ditangani secara praktis, aman, dan profesional oleh teknisi berpengalaman.</p>
                             <Link href="/homeService" className="border px-4 py-2 rounded-full font-poppins text-white text-md bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300">Panggil Teknisi</Link>
                         </div>
                     </div>
@@ -79,7 +80,7 @@ export default function LayananPage() {
                         <div className="xl:w-1/2">
                             <h1 className="mb-5 className
                             font-poppins font-semibold text-2xl xl:text-3xl text-darkb">Teknisi Datang Ke Rumah Anda</h1>
-                            <p className="mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab minus hic unde vel reiciendis suscipit iste, omnis id in velit perferendis repellendus autem a aliquid itaque illo quae, dignissimos alias quod corporis? Molestiae hic consequuntur cupiditate veniam. Vel quaerat eum aperiam enim, nostrum iste explicabo facere nam, quasi fuga cum.</p>
+                            <p className="mb-5">Teknisi kami akan datang ke rumah atau tempat Anda untuk menangani berbagai permasalahan pada laptop maupun komputer secara langsung dan menyeluruh. Layanan ini dikenakan biaya terjangkau sesuai dengan jenis kendala dan tingkat penanganan yang dibutuhkan. Dengan Home Service, Anda tidak perlu repot membawa perangkat ke tempat servis. Semua ditangani secara praktis, aman, dan profesional oleh teknisi berpengalaman.</p>
                             <Link href="/homeService" className="border px-4 py-2 rounded-full font-poppins text-white text-md bg-primary border-primary hover:bg-sky-500 shadow-md hover:shadow-2xl transition duration-300">Panggil Teknisi</Link>
                         </div>
                     </div>
