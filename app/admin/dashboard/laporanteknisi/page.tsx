@@ -120,7 +120,8 @@ export default function LaporanTeknisi() {
                     <td className="px-4 py-3">
                       {item.bukti_pembelian_sparepart ? (
                         <img
-                          src={`/${item.bukti_pembelian_sparepart}`}
+                          src={item.bukti_pembelian_sparepart}
+                          alt="Bukti Pembelian"
                           className="w-10 h-10 object-cover rounded"
                         />
                       ) : (
@@ -131,13 +132,15 @@ export default function LaporanTeknisi() {
                     <td className="px-4 py-3">
                       {item.bukti_pembayaran_customer ? (
                         <img
-                          src={`/${item.bukti_pembayaran_customer}`}
+                          src={item.bukti_pembayaran_customer}
+                          alt="Bukti Pembayaran"
                           className="w-10 h-10 object-cover rounded"
                         />
                       ) : (
                         "-"
                       )}
                     </td>
+
 
                     {/* STATUS + BUTTON */}
                     <td className="px-4 py-3 text-center">
