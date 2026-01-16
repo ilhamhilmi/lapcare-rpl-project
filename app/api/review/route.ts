@@ -3,10 +3,10 @@ import mysql from "mysql2/promise";
 
 
 const pool = mysql.createPool({
-  host: "interchange.proxy.rlwy.net",
-  port: 36631,
+  host: "yamanote.proxy.rlwy.net",
+  port: 51698,
   user: "root",
-  password: "pgkSuXlsZyfRewrdhtjnvFfcBkymqwAH",
+  password: "OXcFFYOhsiXCYBxHEAMHrTztviBjEGrh",
   database: "railway",
 });
 
