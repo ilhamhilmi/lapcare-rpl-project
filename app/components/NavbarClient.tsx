@@ -17,15 +17,26 @@ export default function NavbarClient() {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
-useEffect(() => {
-  const cookies = document.cookie;
+  useEffect(() => {
+    const cookies = document.cookie;
 
-  if (cookies.includes("user_id=")) {
-    setLoggedIn(true);
-  } else {
-    setLoggedIn(false);
-  }
-}, [pathname]);
+    if (cookies.includes("user_id=")) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [pathname]);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const cookies = document.cookie;
+    setLoggedIn(cookies.includes("user_id="));
+  }, [pathname]);
+
+  if (!mounted) return null;
 
 
   const handleLogout = async () => {
