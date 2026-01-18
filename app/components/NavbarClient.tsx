@@ -15,48 +15,18 @@ export default function NavbarClient() {
     setIsOpen(!isOpen);
   };
 
-  const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+  const [loggedIn, setLoggedIn] = useState(false);
 
+useEffect(() => {
+  const cookies = document.cookie;
 
-  useEffect(() => {
-    const checkLogin = async () => {
-      try {
-        const res = await fetch("/api/me", {
-          credentials: "include",
-        });
-
-        if (!res.ok) {
-          setLoggedIn(false);
-          return;
-        }
-
-        const data = await res.json();
-        setLoggedIn(!!data.user);
-      } catch {
-        setLoggedIn(false);
-      }
-    };
-
-    checkLogin();
-  }, []); // ⛔ JANGAN pathname
-
-  if (loggedIn === null) {
-    return null; // atau skeleton navbar
+  if (cookies.includes("user_id=")) {
+    setLoggedIn(true);
+  } else {
+    setLoggedIn(false);
   }
+}, [pathname]);
 
-
-
-
-  // useEffect(() => {
-  //   const cookies = document.cookie;
-
-  //   // cek apakah cookie "user_id" ada
-  //   if (cookies.includes("user_id=")) {
-  //     setLoggedIn(true);
-  //   } else {
-  //     setLoggedIn(false);
-  //   }
-  // }, [pathname]);
 
   const handleLogout = async () => {
     await fetch("/api/logout", {

@@ -41,20 +41,16 @@ const response = NextResponse.json({
   message: "Login user berhasil",
 });
 
-// COOKIE USER
 response.cookies.set("user_id", String(user.id), {
-  httpOnly: true,                         // wajib true untuk keamanan
-  path: "/",                               // root agar bisa diakses semua halaman
-  secure: process.env.NODE_ENV === "production", // wajib true di HTTPS production
+  httpOnly: false, // ⬅️ WAJIB
+  path: "/",
   sameSite: "lax",
-  maxAge: 60 * 60 * 24, // 1 hari
+  maxAge: 60 * 60 * 24,
 });
 
-// ROLE USER TERPISAH
 response.cookies.set("user_role", "user", {
-  httpOnly: true,
+  httpOnly: false,
   path: "/",
-  secure: process.env.NODE_ENV === "production",
   sameSite: "lax",
   maxAge: 60 * 60 * 24,
 });
