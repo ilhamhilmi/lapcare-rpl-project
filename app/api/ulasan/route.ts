@@ -4,13 +4,14 @@ import mysql from "mysql2/promise";
 export const runtime = "nodejs";
 
 const pool = mysql.createPool({
-  host: "interchange.proxy.rlwy.net",
-  port: 36631,
+  host: "yamanote.proxy.rlwy.net",
+  port: 51698,
   user: "root",
-  password: "pgkSuXlsZyfRewrdhtjnvFfcBkymqwAH",
+  password: "OXcFFYOhsiXCYBxHEAMHrTztviBjEGrh",
   database: "railway",
   waitForConnections: true,
   connectionLimit: 10,
+  queueLimit: 0,
 });
 
 export async function GET() {
