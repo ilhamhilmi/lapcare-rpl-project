@@ -15,28 +15,36 @@ export default function NavbarClient() {
     setIsOpen(!isOpen);
   };
 
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+
 
   useEffect(() => {
-  const checkLogin = async () => {
-    try {
-      const res = await fetch("/api/me", {
-        credentials: "include",
-      });
+    const checkLogin = async () => {
+      try {
+        const res = await fetch("/api/me", {
+          credentials: "include",
+        });
 
-      if (res.ok) {
+        if (!res.ok) {
+          setLoggedIn(false);
+          return;
+        }
+
         const data = await res.json();
         setLoggedIn(!!data.user);
-      } else {
+      } catch {
         setLoggedIn(false);
       }
-    } catch {
-      setLoggedIn(false);
-    }
-  };
+    };
 
-  checkLogin();
-}, [pathname]);
+    checkLogin();
+  }, []); // ⛔ JANGAN pathname
+
+  if (loggedIn === null) {
+    return null; // atau skeleton navbar
+  }
+
+
 
 
   // useEffect(() => {
