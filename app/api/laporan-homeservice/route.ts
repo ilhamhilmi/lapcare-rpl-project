@@ -5,55 +5,56 @@ import { supabase } from "@/lib/supabase";
 
 export const runtime = "nodejs";
 
-// export async function GET() {
-//   return Response.json({
-//     url: process.env.SUPABASE_URL ?? null,
-//     key: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
-//   });
-// }
-
+/* GET */
 export async function GET() {
   try {
     const cookieStore = await cookies();
     const teknisiId = cookieStore.get("teknisi_id")?.value;
 
     if (!teknisiId) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const [rows]: any = await db.query(
+    // ambil username teknisi
+    const [teknisiRows]: any = await db.query(
       "SELECT username FROM user WHERE id = ? AND role = 'teknisi'",
       [teknisiId]
     );
 
-    if (!rows.length) {
+    if (!teknisiRows.length) {
       return NextResponse.json(
         { message: "Teknisi tidak ditemukan" },
         { status: 404 }
       );
     }
 
+    // FIX UTAMA ADA DI SINI
+const [homeServiceRows]: any = await db.query(`
+  SELECT 
+    id,
+    nama
+  FROM home_service
+  WHERE status = 'proses'
+  ORDER BY id DESC
+`);
+
+
     return NextResponse.json({
-      username_teknisi: rows[0].username,
+      username_teknisi: teknisiRows[0].username,
+      home_services: homeServiceRows,
     });
   } catch (error) {
     console.error(error);
-    return NextResponse.json(
-      { message: "Server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Server error" }, { status: 500 });
   }
 }
 
-
-
+/*  POST (TIDAK DIUBAH) */
 export async function POST(req: Request) {
   try {
     const cookieStore = await cookies();
     const teknisiId = cookieStore.get("teknisi_id")?.value;
+
     if (!teknisiId) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
@@ -91,7 +92,9 @@ export async function POST(req: Request) {
 
       if (error) throw error;
 
-      return supabase.storage.from("laporan-teknisi").getPublicUrl(filePath).data.publicUrl;
+      return supabase.storage
+        .from("laporan-teknisi")
+        .getPublicUrl(filePath).data.publicUrl;
     };
 
     const buktiSparepart = await uploadFile(
@@ -105,7 +108,7 @@ export async function POST(req: Request) {
     );
 
     await db.execute(
-      `INSERT INTO laporan_teknisi 
+      `INSERT INTO laporan_teknisi
       (home_service_id, username_customer, username_teknisi, detail_kerusakan,
        ongkos_perbaikan, biaya_sparepart, bukti_pembelian_sparepart, bukti_pembayaran_customer)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -121,12 +124,16 @@ export async function POST(req: Request) {
       ]
     );
 
-    return NextResponse.json({ message: "Laporan berhasil disimpan" }, { status: 201 });
+    return NextResponse.json(
+      { message: "Laporan berhasil disimpan" },
+      { status: 201 }
+    );
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "Server error" }, { status: 500 });
   }
 }
+
 
 
 

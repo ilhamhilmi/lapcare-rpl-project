@@ -4,10 +4,17 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import toast from "react-hot-toast";
 
+type HomeService = {
+  id: number;
+  nama: string;
+};
+
 export default function LaporanTeknisi() {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+
+  const [homeServices, setHomeServices] = useState<HomeService[]>([]);
 
   const [fileNameSparepart, setFileNameSparepart] = useState("Belum ada file");
   const [fileNamePembayaran, setFileNamePembayaran] = useState("Belum ada file");
@@ -24,41 +31,32 @@ export default function LaporanTeknisi() {
   const [bukti_pembayaran_customer, setBuktiPembayaranCustomer] =
     useState<File | null>(null);
 
-useEffect(() => {
-  const fetchTeknisi = async () => {
-    try {
-      const res = await fetch("/api/laporan-homeservice", {
-        method: "GET",
-        credentials: "include",
-      });
+  // 🔥 AMBIL TEKNISI + HOME SERVICE
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/laporan-homeservice", {
+          credentials: "include",
+        });
 
-      if (!res.ok) {
-        throw new Error("Gagal mengambil data teknisi");
+        if (!res.ok) throw new Error();
+
+        const data = await res.json();
+        setUsernameTeknisi(data.username_teknisi);
+        setHomeServices(data.home_services);
+      } catch {
+        toast.error("Gagal mengambil data");
       }
+    };
 
-      const data = await res.json();
-      setUsernameTeknisi(data.username_teknisi);
-    } catch (err) {
-      console.error(err);
-      toast.error("Gagal mengambil data teknisi");
-    }
+    fetchData();
+  }, []);
+
+  const handleSelectHomeService = (id: string) => {
+    setHomeServiceId(id);
+    const selected = homeServices.find(hs => hs.id === Number(id));
+    setUsernameCustomer(selected?.nama || "");
   };
-
-  fetchTeknisi();
-}, []);
-
-
-
-  // useEffect(() => {
-  //   fetch("/api/laporan-homeservice", { credentials: "include" })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       // setHomeServiceId(String(data.home_service_id ?? ""));
-  //       // setUsernameCustomer(data.username_customer ?? "");
-  //       setUsernameTeknisi(data.username_teknisi ?? "");
-  //     })
-  //     .catch(() => toast.error("Gagal mengambil data"));
-  // }, []);
 
   const handleSubmit = async () => {
     if (!home_service_id || !username_customer || !detail_kerusakan || !ongkos_perbaikan) {
@@ -68,25 +66,18 @@ useEffect(() => {
 
     try {
       const formData = new FormData();
-      // coba 1 baris
       formData.append("home_service_id", home_service_id);
-      formData.append("username_customer", username_customer); //-
+      formData.append("username_customer", username_customer);
       formData.append("detail_kerusakan", detail_kerusakan);
       formData.append("ongkos_perbaikan", ongkos_perbaikan);
       formData.append("biaya_sparepart", biaya_sparepart);
 
       if (bukti_pembelian_sparepart) {
-        formData.append(
-          "bukti_pembelian_sparepart",
-          bukti_pembelian_sparepart
-        );
+        formData.append("bukti_pembelian_sparepart", bukti_pembelian_sparepart);
       }
 
       if (bukti_pembayaran_customer) {
-        formData.append(
-          "bukti_pembayaran_customer",
-          bukti_pembayaran_customer
-        );
+        formData.append("bukti_pembayaran_customer", bukti_pembayaran_customer);
       }
 
       const res = await fetch("/api/laporan-homeservice", {
@@ -121,40 +112,40 @@ useEffect(() => {
           </h1>
         </div>
 
+        {/*  DROPDOWN GANTI INPUT (UI TETAP) */}
         <div className="flex justify-center">
-          <input
-            value={home_service_id}
-            onChange={e => setHomeServiceId(e.target.value)}
-            placeholder="Home Dervice ID"
-            className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
-            // value={home_service_id}
-            // readOnly
-            // className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
-            // placeholder="ID Home Service"
-          />
+            <select
+              value={home_service_id}
+              onChange={e => handleSelectHomeService(e.target.value)}
+              className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
+            >
+              <option value="">Home Service ID</option>
+              {homeServices.map(hs => (
+                <option key={hs.id} value={hs.id} className="text-black">
+                  {hs.id} — {hs.nama}
+                </option>
+              ))}
+            </select>
         </div>
 
         <div className="flex justify-center">
           <input
             value={username_customer}
-            onChange={e => setUsernameCustomer(e.target.value)}
+            readOnly
             placeholder="Username Customer"
             className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
-            // value={username_customer}
-            // readOnly
-            // className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
-            // placeholder="Username Customer"
           />
         </div>
 
         <div className="flex justify-center">
           <input
-            value={username_teknisi || ""}
+            value={username_teknisi}
             readOnly
             className="border px-4 py-2 rounded-full w-3/4 xl:w-1/2 mb-3 text-white bg-transparent"
             placeholder="Username Teknisi"
           />
         </div>
+
         <div className="flex justify-center">
           <textarea
             value={detail_kerusakan}
