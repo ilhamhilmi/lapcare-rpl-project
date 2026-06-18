@@ -1,15 +1,5 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
-
-
-const pool = mysql.createPool({
-  host: "yamanote.proxy.rlwy.net",
-  port: 51698,
-  user: "root",
-  password: "OXcFFYOhsiXCYBxHEAMHrTztviBjEGrh",
-  database: "railway",
-});
-
+import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
   try {
@@ -27,7 +17,7 @@ export async function POST(req: Request) {
       VALUES (?, ?, ?)
     `;
 
-    const [result] = await pool.execute(query, [
+    const [result] = await db.execute(query, [
       name,
       job || null,
       message,
@@ -63,7 +53,7 @@ export async function GET() {
       ORDER BY created_at DESC
     `;
 
-    const [rows] = await pool.execute(query);
+    const [rows] = await db.execute(query);
 
     return NextResponse.json({
       success: true,

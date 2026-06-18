@@ -77,7 +77,7 @@ export default function Login() {
               onSubmit={handleSubmit}
               className="flex flex-col w-full items-center"
               autoComplete='off'
-            >
+            > 
               <div className="w-full xl:w-2/3 mb-3">
                 <input name="username" onChange={handleChange} type="text" className="border px-4 py-2 rounded-full w-full text-darkb border-darkb focus:outline-none" placeholder="Username" required />
               </div>

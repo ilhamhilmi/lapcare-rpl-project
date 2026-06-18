@@ -1,17 +1,7 @@
 import { NextResponse } from "next/server";
-import mysql from "mysql2/promise";
+import { db } from "@/lib/db";
 
 export const runtime = "nodejs";
-
-const pool = mysql.createPool({
-  host: "interchange.proxy.rlwy.net",
-  port: 36631,
-  user: "root",
-  password: "pgkSuXlsZyfRewrdhtjnvFfcBkymqwAH",
-  database: "railway",
-  waitForConnections: true,
-  connectionLimit: 10,
-});
 
 export async function GET() {
   try {
@@ -26,7 +16,7 @@ export async function GET() {
       ORDER BY created_at DESC
     `;
 
-    const [rows] = await pool.execute(query);
+    const [rows] = await db.execute(query);
 
     return NextResponse.json({
       success: true,
